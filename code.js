@@ -176,7 +176,7 @@ function buildPage2(results, image)
             $(resultsList).append("<ul id=\listBricks" + i + ">");
             $("#listBricks" + i).css({"height": "50px", "text-align": "center", "border": "solid 1px black"});
             var resultsList2 = document.getElementById("listBricks" + i);
-            $(resultsList2).append("<li id=\"pane1\">white</li>");
+            $(resultsList2).append("<li id=\"pane1\">Get New CLU</li>");
             $("#listBricks" + i + " > " + "#pane1").css({"background": "green","background-image": "url(searchListItem.png)", "background-repeat": "no-repeat", "background-size": " 20% 100%", "height": "100%"});
             //    $("#listBricks0 > li").css({"background-image": "url" + "(\"delListItem.png\")", "background-repeat": "no-repeat","background-size": " 20% 100%","height":"100%","backgroung":"green"});
 
@@ -184,7 +184,7 @@ function buildPage2(results, image)
             $("#listBricks" + i + " > " + "#pane2").css({"height": "100%"});
 
             //$("#pane2").css({"height":"100%"});
-            $(resultsList2).append("<li id=\"pane3\">white</li>");
+            $(resultsList2).append("<li id=\"pane3\">Throw This CLU</li>");
            // $("#pane3").css({"background-image": "url" + "(\"searchListItem.PNG\")", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%", "backgroung": "blue"});
            $("#listBricks" + i + " > " + "#pane3").css({"background": "red","background-image": "url(delListItem.png)", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%"});
 
@@ -336,21 +336,23 @@ function getContext(i) {
     console.log(result.results);
 //        if ($('#list' + i).attr("onClick") === action) {
     $('#lineup').html(getInputValue() + "-" + result.results[i].context).css({"font-size": "100%"});
-    $('#lineup').css({top: '50%'});
-    $('#lineup').animate({height: '80%'});
+    $('#lineup').css({top: '70%'});
+    $('#lineup').animate({height: '30%'});
     $('#lineup').attr("onClick", "showOnlyValue()");
+//    $('#lineup').css({top: '85%'});
 //        }
 //        console.log(i);
 //        console.log(resultsList);
 }
 
 function showOnlyValue() {
+//    alert("show");
     $('#lineup').css({
         "color": "white",
         "font-size": "2em",
         "background-color": "black",
         "opacity": "0.6",
-//    "height": "7%",
+         "height": "15%",
         "width": "100%",
         "bottom": "0px",
         "position": "relative",
