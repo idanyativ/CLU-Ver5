@@ -177,8 +177,8 @@ function buildPage2(results, image)
             $("#listBricks" + i).css({"height": "50px", "text-align": "center", "border": "solid 1px black"});
             var resultsList2 = document.getElementById("listBricks" + i);
             $(resultsList2).append("<li id=\"pane1\">white</li>");
-            $("#listBricks" + i + " > " + "#pane1").css({"background": "green","background-image": "url" + "(\"searchListItem.PNG\")", "background-repeat": "no-repeat", "background-size": " 20% 100%", "height": "100%"});
-            //    $("#listBricks0 > li").css({"background-image": "url" + "(\"delListItem.PNG\")", "background-repeat": "no-repeat","background-size": " 20% 100%","height":"100%","backgroung":"green"});
+            $("#listBricks" + i + " > " + "#pane1").css({"background": "green","background-image": "url(searchListItem.png)", "background-repeat": "no-repeat", "background-size": " 20% 100%", "height": "100%"});
+            //    $("#listBricks0 > li").css({"background-image": "url" + "(\"delListItem.png\")", "background-repeat": "no-repeat","background-size": " 20% 100%","height":"100%","backgroung":"green"});
 
             $(resultsList2).append("<li id=\"pane2\"><a>" + result.results[i].value + "</a></li>");
             $("#listBricks" + i + " > " + "#pane2").css({"height": "100%"});
@@ -186,7 +186,7 @@ function buildPage2(results, image)
             //$("#pane2").css({"height":"100%"});
             $(resultsList2).append("<li id=\"pane3\">white</li>");
            // $("#pane3").css({"background-image": "url" + "(\"searchListItem.PNG\")", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%", "backgroung": "blue"});
-           $("#listBricks" + i + " > " + "#pane3").css({"background": "red","background-image": "url" + "(\"delListItem.PNG\")", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%"});
+           $("#listBricks" + i + " > " + "#pane3").css({"background": "red","background-image": "url(delListItem.png)", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%"});
 
             $(resultsList).append("</ul>");
             carousels[i] = new Carousel("#carousel" + i);
