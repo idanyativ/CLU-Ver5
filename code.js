@@ -177,16 +177,16 @@ function buildPage2(results, image)
             $("#listBricks" + i).css({"height": "50px", "text-align": "center", "border": "solid 1px black"});
             var resultsList2 = document.getElementById("listBricks" + i);
             $(resultsList2).append("<li id=\"pane1\">Get New CLU</li>");
-            $("#listBricks" + i + " > " + "#pane1").css({"background": "green","background-image": "url(searchListItem.png)", "background-repeat": "no-repeat", "background-size": " 20% 100%", "height": "100%"});
+            $("#listBricks" + i + " > " + "#pane1").css({"background": "rgb(72,182,233)","background-image": "url(searchListItem.png)", "background-repeat": "no-repeat", "background-size": " 20% 100%", "height": "100%","font-weight":"bold","font-style":"italic","font-size":"150%"});
             //    $("#listBricks0 > li").css({"background-image": "url" + "(\"delListItem.png\")", "background-repeat": "no-repeat","background-size": " 20% 100%","height":"100%","backgroung":"green"});
 
             $(resultsList2).append("<li id=\"pane2\"><a>" + result.results[i].value + "</a></li>");
-            $("#listBricks" + i + " > " + "#pane2").css({"height": "100%"});
+            $("#listBricks" + i + " > " + "#pane2").css({"height": "100%","color":"grey","font-weight":"bold","margin-top":"1%","font-style":"italic","font-size":"150%"});
 
             //$("#pane2").css({"height":"100%"});
             $(resultsList2).append("<li id=\"pane3\">Throw This CLU</li>");
            // $("#pane3").css({"background-image": "url" + "(\"searchListItem.PNG\")", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%", "backgroung": "blue"});
-           $("#listBricks" + i + " > " + "#pane3").css({"background": "red","background-image": "url(delListItem.png)", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%"});
+           $("#listBricks" + i + " > " + "#pane3").css({"background": "rgb(250,20,20)","background-image": "url(delListItem.png)", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%","font-weight":"bold","font-style":"italic","font-size":"150%"});
 
             $(resultsList).append("</ul>");
             carousels[i] = new Carousel("#carousel" + i);
@@ -330,12 +330,12 @@ function buildPage2(results, image)
 //}
 
 function getContext(i) {
-    alert(i);
-    var action = "getContext(" + i + ")";
+//    alert(i);
+//    var action = "getContext(" + i + ")";
 //    var valueAndContext = getInputValue(); 
-    console.log(result.results);
+//    console.log(result.results);
 //        if ($('#list' + i).attr("onClick") === action) {
-    $('#lineup').html(getInputValue() + "-" + result.results[i].context).css({"font-size": "100%"});
+    $('#lineup').html(result.results[i].value + " - " + result.results[i].context).css({"font-size": "100%"});
     $('#lineup').css({top: '70%'});
     $('#lineup').animate({height: '30%'});
     $('#lineup').attr("onClick", "showOnlyValue()");

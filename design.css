@@ -1,3 +1,9 @@
+html,body, .ui-link{
+     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+.ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a{
+    color : grey;
+}
 #mainPageHeader{
     background-color: rgb(9,201,186);
 }
@@ -36,7 +42,7 @@ right : .3125em;
 }
 
 #CLUbutton,#speechToolMain,#mainSpeech {
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+        font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     background-color: #3399FF;
     text-align: center;
     font-size: 150%;
@@ -68,9 +74,9 @@ resultPageHeader > p{
     // right : .3125em;
     /*   margin-left: -50px;*/
 }
-/*#resultSearch{
-    position: fixed;  left: 0;
-}*/
+#resultSearch{
+    font-weight: bolder;
+}
 
 
 
