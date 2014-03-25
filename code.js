@@ -166,46 +166,47 @@ function buildPage2(results, image)
     $("#resultContent").empty();
 //    setPicText();
     var incomeResults = results;
- //   resultsList = document.getElementById("listcontainer");
+    //   resultsList = document.getElementById("listcontainer");
     if (incomeResults !== null)
     {
         var holder = document.getElementById("resultContent");
-            for (var i = 0; i < 3; i++) {
-                $(holder).append("<div id=\carousel" + i + ">" + "</div>");
-                var resultsList = document.getElementById("carousel" + i);
-                $(resultsList).append("<ul id=\listBricks" + i + ">");
-                 $("#listBricks"+i).css({"height":"50px","text-align":"center","border":"solid 1px black"});
-                var resultsList2 = document.getElementById("listBricks" + i);
-                $(resultsList2).append("<li id=\"pane1\">white</li>");
-                $("#listBricks"+i+ " > "+ "#pane1").css({"background-image": "url" + "(\"delListItem.PNG\")", "background-repeat": "no-repeat","background-size": " 20% 100%","height":"100%","backgroung":"green"});
+        for (var i = 0; i < 3; i++) {
+            $(holder).append("<div id=\carousel" + i + ">" + "</div>");
+            var resultsList = document.getElementById("carousel" + i);
+            $(resultsList).append("<ul id=\listBricks" + i + ">");
+            $("#listBricks" + i).css({"height": "50px", "text-align": "center", "border": "solid 1px black"});
+            var resultsList2 = document.getElementById("listBricks" + i);
+            $(resultsList2).append("<li id=\"pane1\">white</li>");
+            $("#listBricks" + i + " > " + "#pane1").css({"background": "green","background-image": "url" + "(\"searchListItem.PNG\")", "background-repeat": "no-repeat", "background-size": " 20% 100%", "height": "100%"});
             //    $("#listBricks0 > li").css({"background-image": "url" + "(\"delListItem.PNG\")", "background-repeat": "no-repeat","background-size": " 20% 100%","height":"100%","backgroung":"green"});
 
             $(resultsList2).append("<li id=\"pane2\"><a>" + result.results[i].value + "</a></li>");
-            $("#listBricks"+i+ " > "+ "#pane2").css({"height":"100%"});
+            $("#listBricks" + i + " > " + "#pane2").css({"height": "100%"});
 
-                 //$("#pane2").css({"height":"100%"});
-                $(resultsList2).append("<li id=\"pane3\">white</li>");
-                 $("#pane3").css({"background-image": "url" + "(\"searchListItem.PNG\")", "background-repeat": "no-repeat","background-size": "20% 100%","height":"100%","backgroung":"blue"});
-             $("#listBricks"+i+ " > "+ "#pane3").css({"background-image": "url" + "(\"searchListItem.PNG\")", "background-repeat": "no-repeat","background-size": "20% 100%","height":"100%","backgroung":"blue"});
-   
+            //$("#pane2").css({"height":"100%"});
+            $(resultsList2).append("<li id=\"pane3\">white</li>");
+           // $("#pane3").css({"background-image": "url" + "(\"searchListItem.PNG\")", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%", "backgroung": "blue"});
+           $("#listBricks" + i + " > " + "#pane3").css({"background": "red","background-image": "url" + "(\"delListItem.PNG\")", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%"});
+
             $(resultsList).append("</ul>");
-                carousels[i] = new Carousel("#carousel" + i);
+            carousels[i] = new Carousel("#carousel" + i);
 //               $("#carousel" + i).css({"height":"50px","padding": "0","margin":"0","position": "relative","overflow": "hidden","width": "100%","-webkit-backface-visibility": "hidden","-webkit-transform": "translate3d(0,0,0) scale3d(1,1,1)","-webkit-transform-style": "preserve-3d"});
 //                $("#carousel"+i + " " + "ul.animate").css({"-webkit-transition": "all .3s","-moz-transition": "all .3s","-o-transition": "all .3s","transition":" all .3s"});
 //                $("#carousel"+i + " " +"ul").css({ "-webkit-transform": "translate3d(0%,0,0) scale3d(1,1,1)"," -moz-transform":"translate3d(0%,0,0) scale3d(1,1,1)","-ms-transform":"translate3d(0%,0,0) scale3d(1,1,1)","-o-transform":"translate3d(0%,0,0) scale3d(1,1,1)","transform": "translate3d(0%,0,0) scale3d(1,1,1)","overflow": "hidden","-webkit-backface-visibility": "hidden","-webkit-transform-style": "preserve-3d"});
 //                $("#carousel"+i +" " + "ul").css({"-webkit-box-shadow":"0 0 20px rgba(0,0,0,.2)"," box-shadow":"0 0 20px rgba(0,0,0,.2)","position": "relative"});
 //                $("#carousel"+i + " " +"li").css({"float": "left","overflow": "hidden","-webkit-transform-style": "preserve-3d","-webkit-transform": "translate3d(0,0,0)"});
 //                $("#carousel"+i + " " +"ul.pane2").css({"background": "red"});
-                carousels[i].init();
+            carousels[i].init();
         }
     }
-        $('#resultPage').html();
+    $('#resultPage').html();
 //        $('#listcontainer').html(resultsList);
-        $('#resultPage').trigger("create");//refreashing dynamically
-        $('#resultPage a').on('click', function(e) {
-            e.preventDefault();
-        });
-    };
+    $('#resultPage').trigger("create");//refreashing dynamically
+    $('#resultPage a').on('click', function(e) {
+        e.preventDefault();
+    });
+}
+;
 //function buildPage2(res, image)
 //{
 //    $.mobile.changePage('#resultPage');
@@ -328,39 +329,39 @@ function buildPage2(results, image)
 //    console.log(resultsList);
 //}
 
-    function getContext(i) {
-        alert(i);
-        var action = "getContext(" + i + ")";
+function getContext(i) {
+    alert(i);
+    var action = "getContext(" + i + ")";
 //    var valueAndContext = getInputValue(); 
-        console.log(result.results);
+    console.log(result.results);
 //        if ($('#list' + i).attr("onClick") === action) {
-            $('#lineup').html(getInputValue() + "-" + result.results[i].context).css({"font-size": "100%"});
-            $('#lineup').css({top: '50%'});
-            $('#lineup').animate({height: '80%'});
-            $('#lineup').attr("onClick", "showOnlyValue()");
+    $('#lineup').html(getInputValue() + "-" + result.results[i].context).css({"font-size": "100%"});
+    $('#lineup').css({top: '50%'});
+    $('#lineup').animate({height: '80%'});
+    $('#lineup').attr("onClick", "showOnlyValue()");
 //        }
 //        console.log(i);
 //        console.log(resultsList);
-    }
+}
 
-    function showOnlyValue() {
-        $('#lineup').css({
-            "color": "white",
-            "font-size": "2em",
-            "background-color": "black",
-            "opacity": "0.6",
+function showOnlyValue() {
+    $('#lineup').css({
+        "color": "white",
+        "font-size": "2em",
+        "background-color": "black",
+        "opacity": "0.6",
 //    "height": "7%",
-            "width": "100%",
-            "bottom": "0px",
-            "position": "relative",
-            "top": "85%"
-        });
-        $('#lineup').text(getInputValue());
-        var action = "onclick()";
-        if ($('#lineup').attr("onclick") === action) {
-            $('#lineup').removeAttribute("onclick");
-        }
+        "width": "100%",
+        "bottom": "0px",
+        "position": "relative",
+        "top": "85%"
+    });
+    $('#lineup').text(getInputValue());
+    var action = "onclick()";
+    if ($('#lineup').attr("onclick") === action) {
+        $('#lineup').removeAttribute("onclick");
     }
+}
 
 
 
@@ -376,45 +377,45 @@ function buildPage2(results, image)
 //    console.log(resultsList);
 //}
 
-    function cutResults(res) {
-        var newRes = res;
-        newRes.results = newRes.results.splice(0, 3);
-        return newRes;
-    }
+function cutResults(res) {
+    var newRes = res;
+    newRes.results = newRes.results.splice(0, 3);
+    return newRes;
+}
 
-    function appendToList() {
+function appendToList() {
 //    if (count !== length) {
-        $("#resultList").append("<li><a onclick=\"getContext(" + count + ")\" id=\list" + count + ">" + result.results[count].value + "</a></li>");
+    $("#resultList").append("<li><a onclick=\"getContext(" + count + ")\" id=\list" + count + ">" + result.results[count].value + "</a></li>");
 //        var color = setColor(count);
-        $("#list" + count).css({"text-align": "center", "color": "grey", "background-color": "white", "padding": "25px", "font-family": "Geneva, Tahoma, Verdana, sans-serif", "text-overflow": "ellipsis"});
-        //  $("#list" + count).css({"height": "30px", "text-align": "center", "color": "white", "background-color": color, "padding-top": "25px","text-overflow": "ellipsis"});
-        count++;
-        console.log("count:" + count);
+    $("#list" + count).css({"text-align": "center", "color": "grey", "background-color": "white", "padding": "25px", "font-family": "Geneva, Tahoma, Verdana, sans-serif", "text-overflow": "ellipsis"});
+    //  $("#list" + count).css({"height": "30px", "text-align": "center", "color": "white", "background-color": color, "padding-top": "25px","text-overflow": "ellipsis"});
+    count++;
+    console.log("count:" + count);
 //    }
-    }
+}
 
-    function removeFromList(index) {
-        console.log(index);
+function removeFromList(index) {
+    console.log(index);
 //    $("#list" + index).animate({width: 'toggle'}, function() {
 //        // And fade in the menu
 //        $("#list" + index).fadeOut();
 //    });
-        $("#list" + index).remove();
-        $("#list" + index).css("height", 0);
+    $("#list" + index).remove();
+    $("#list" + index).css("height", 0);
 
-    }
+}
 
 
 
-    function randomPage() {
-        getCLU("Nikola Tesla");
-    }
+function randomPage() {
+    getCLU("Nikola Tesla");
+}
 
-    function startOver() {
-        index = 0;
-        count = 0;
-        getCLU(getInputValue());
-    }
+function startOver() {
+    index = 0;
+    count = 0;
+    getCLU(getInputValue());
+}
 
 //function getHistory() {
 //    $.mobile.changePage('#historyPage');
@@ -455,84 +456,84 @@ function buildPage2(results, image)
 //    ctx.fillText("pic " + getInputValue() + "2", 80, 80);
 //}
 
-    function removeItem(item) {
-        var li = $(item);
-        var contents = $(li.children()[0]);
-        var item = contents.text(); // Get the item value
-        var itemId = contents.attr("id");
+function removeItem(item) {
+    var li = $(item);
+    var contents = $(li.children()[0]);
+    var item = contents.text(); // Get the item value
+    var itemId = contents.attr("id");
 
-        var delButton = $("<a>").text("Yes").click(function(e) {
-            // Delete button handler, fade out menu and remove the row
-            e.stopPropagation();
-            menu.fadeOut("slow", function() {
-                li.remove();
-                // Do something in order to delete item, send request to server or similar
-                // alert("Deleted " + item + " with ID = " + itemId);
-                appendToList();
+    var delButton = $("<a>").text("Yes").click(function(e) {
+        // Delete button handler, fade out menu and remove the row
+        e.stopPropagation();
+        menu.fadeOut("slow", function() {
+            li.remove();
+            // Do something in order to delete item, send request to server or similar
+            // alert("Deleted " + item + " with ID = " + itemId);
+            appendToList();
+        });
+    });
+    var cancelButton = $("<a>").text("No").click(function(e) {
+        // Cancel Handler, remove menu and show the item
+        e.stopPropagation();
+        menu.fadeOut("slow", function() {
+            contents.animate({width: 'toggle'}, function() {
+                menu.remove();
             });
         });
-        var cancelButton = $("<a>").text("No").click(function(e) {
-            // Cancel Handler, remove menu and show the item
-            e.stopPropagation();
-            menu.fadeOut("slow", function() {
-                contents.animate({width: 'toggle'}, function() {
-                    menu.remove();
-                });
+    });
+
+    // Create the menu
+    var menu = $("<span />").append("Remove Value? - ").append(delButton).append(" | ").append(cancelButton)
+            .css("display", "none")
+            .addClass("menu");
+
+    // Insert the menu
+    contents.after(menu);
+    // Slide the item 
+    contents.animate({width: 'toggle'}, function() {
+        // And fade in the menu
+        menu.fadeIn();
+    });
+}
+
+function searchItem(item, nextValue) {
+    var li = $(item);
+    console.log(li);
+    var contents = $(li.children()[0]);
+    var item = contents.text(); // Get the item value
+    var itemId = contents.attr("id");
+
+    var delButton = $("<a>").text("Yes").click(function(e) {
+        // Delete button handler, fade out menu and remove the row
+        e.stopPropagation();
+        menu.fadeOut("slow", function() {
+            li.remove();
+            // Do something in order to delete item, send request to server or similar
+            //   alert("Deleted " + item + " with ID = " + itemId);
+            getCLU(nextValue);
+
+        });
+    });
+    var cancelButton = $("<a>").text("No").click(function(e) {
+        // Cancel Handler, remove menu and show the item
+        e.stopPropagation();
+        menu.fadeOut("slow", function() {
+            contents.animate({width: 'toggle'}, function() {
+                menu.remove();
             });
         });
+    });
 
-        // Create the menu
-        var menu = $("<span />").append("Remove Value? - ").append(delButton).append(" | ").append(cancelButton)
-                .css("display", "none")
-                .addClass("menu");
+    // Create the menu
+    var menu = $("<span />").append("Search Next Value? - ").append(delButton).append(" | ").append(cancelButton)
+            .css("display", "none")
+            .addClass("menu");
 
-        // Insert the menu
-        contents.after(menu);
-        // Slide the item 
-        contents.animate({width: 'toggle'}, function() {
-            // And fade in the menu
-            menu.fadeIn();
-        });
-    }
-
-    function searchItem(item, nextValue) {
-        var li = $(item);
-        console.log(li);
-        var contents = $(li.children()[0]);
-        var item = contents.text(); // Get the item value
-        var itemId = contents.attr("id");
-
-        var delButton = $("<a>").text("Yes").click(function(e) {
-            // Delete button handler, fade out menu and remove the row
-            e.stopPropagation();
-            menu.fadeOut("slow", function() {
-                li.remove();
-                // Do something in order to delete item, send request to server or similar
-                //   alert("Deleted " + item + " with ID = " + itemId);
-                getCLU(nextValue);
-
-            });
-        });
-        var cancelButton = $("<a>").text("No").click(function(e) {
-            // Cancel Handler, remove menu and show the item
-            e.stopPropagation();
-            menu.fadeOut("slow", function() {
-                contents.animate({width: 'toggle'}, function() {
-                    menu.remove();
-                });
-            });
-        });
-
-        // Create the menu
-        var menu = $("<span />").append("Search Next Value? - ").append(delButton).append(" | ").append(cancelButton)
-                .css("display", "none")
-                .addClass("menu");
-
-        // Insert the menu
-        contents.after(menu);
-        // Slide the item 
-        contents.animate({width: 'toggle'}, function() {
-            // And fade in the menu
-            menu.fadeIn();
-        });
+    // Insert the menu
+    contents.after(menu);
+    // Slide the item 
+    contents.animate({width: 'toggle'}, function() {
+        // And fade in the menu
+        menu.fadeIn();
+    });
 }
