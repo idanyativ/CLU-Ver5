@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CLU - Less Is More </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+        <!-- JS -->
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+        <script src="modernizr.js"></script>
+        <script type="text/javascript" src="hammer.js"></script>
+
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
+        <link rel="stylesheet" type="text/css" href="design.css" />
+        <link rel="stylesheet" type="text/css" href="my.css" />
+
+
+
+    </head>
+
+    <body>  
+        <!--<div id="loader"></div>-->
+        <!--        <div id="loader" data-role="page" data-position="fixed">
+                    <div id="pp" data-role="content"></div>
+                </div>-->
+
+        <!-- Main Page -->
+        <div id="mainPage" data-role="page" data-position="fixed" class="ui-responsive-panel">
+
+            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="menuPanel" data-theme="d">
+
+                <ul data-role="listview" data-theme="d" data-divider-theme="a" style="margin-top:-16px;" class="nav-search">
+                    <li data-icon="home" data-filtertext="wai-aria voiceover accessibility screen reader">
+                        <a href="#mainPage">Home</a>
+                    </li>
+                    <li data-icon="star" data-filtertext="wai-aria voiceover accessibility screen reader">
+                        <a id="randomPage" onclick="randomPage();">Get A Clu!</a>
+                    </li>
+                    <li data-icon="info" data-filtertext="wai-aria voiceover accessibility screen reader">
+                        <a href="#aboutPage">About</a>
+                    </li>
+                </ul>
+
+                <!-- panel content goes here -->
+            </div><!-- /panel -->
+            <header data-role="header" id="mainPageHeader" data-theme="d">
+                <a href="#menuPanel" id="menuPanelButton"  data-iconpos="notext"></a>
+                <p>Clu</p>
+            </header>
+
+            <div data-role="content" id="mainContent" align="center">
+                <p id="mainTitle">Get A CLU About... </p>
+                <form id="mainContentForm" > 
+
+                    <input type="search" id="mainSearch" placeholder="Search a new Term" value="" lang="en" onkeydown="if (event.keyCode === 13)
+                                getCLU(document.getElementById('mainSearch').value)"  autocomplete="on">
+                    <!--                    <div id="CLUbutton">
+                                            <a href="" id="CLUbuttonMain" onclick="getCLU(document.getElementById('mainSpeech').value)"><span> GET A CLUE</span> </a>   
+                                        </div>-->
+
+                </form>
+            </div>
+        </div>
+
+        <!-- Result Page -->
+        <div id="resultPage" data-role="page" data-position="fixed" class="ui-responsive-panel">
+            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="resultPanel" data-theme="d">
+
+                <ul data-role="listview" data-theme="d" data-divider-theme="a" style="margin-top:-16px;" class="nav-search">
+                    <li data-icon="delete">
+                        <a href="#" data-rel="close">Close menu</a>
+                    </li>
+                    <li data-icon="home" data-filtertext="wai-aria voiceover accessibility screen reader">
+                        <a href="#mainPage">Home</a>
+                    </li>
+                    <li data-icon="star" data-filtertext="wai-aria voiceover accessibility screen reader">
+                        <a onclick="randomPage();">Get A Clu!</a>
+                    </li>
+                    <li data-icon="gear" data-filtertext="wai-aria voiceover accessibility screen reader">
+                        <a href="#settingsPage">Settings</a>
+                    </li>
+                    <li data-icon="gear" data-filtertext="wai-aria voiceover accessibility screen reader">
+                        <a href="" onClick="getHistory()"> History </a>
+                    </li>
+                    <li data-icon="info" data-filtertext="wai-aria voiceover accessibility screen reader">
+                        <a href="#aboutPage">About</a>
+                    </li>
+                </ul>
+
+                <!-- panel content goes here -->
+            </div><!-- /panel -->
+            <header data-role="header" id="resultPageHeader" data-theme="d">
+                <a href="#resultPanel" id="resultPanelButton" data-iconpos="notext"></a>
+                <a href="" onclick="randomPage()" data-icon="star" data-iconpos="notext"></a>
+                <p id="resultTitle">CLU</p>
+                    <input type="search" id="resultSearch"  lang="en" name="name" onkeydown="if (event.keyCode === 13)
+                                getCLU(document.getElementById('name').value)" value="" placeholder="Search"/>               
+            </header>
+
+            <div id="resultImages">
+                <div id="lineup">
+                </div>
+            </div>
+
+            <div data-role="content" id="resultContent"> 
+
+                <div id="resultContentForm">
+                    <!--<div id="listcontainer" align="center">-->
+<!--                        <ul data-role="listview" id="resultList" data-icon="false" >
+                        </ul>-->
+                    <!--</div>-->      
+                </div>
+            </div>
+
+            <!--            <footer data-role="footer" id="resultPageFooter" data-position="fixed" data-theme="e">
+                            <nav data-role="navbar" data-position="fixed" id="resultNavBar" > 
+                                <ul>
+                                    <li ><a data-icon="home" href="#mainPage" > Home </a></li>
+                                    <li ><a data-icon="star" href="" onclick="randomPage()" > Get A CLU </a></li>
+                                    <li ><a data-icon="gear" href="" onclick="onBuild()" > Settings</a></li>
+                                    <li> <a href="" onClick="getHistory()"> History </a></li>
+                                    <li ><a data-icon="info" href="#aboutPage" > About</a></li>
+                                </ul>
+                            </nav>
+                        </footer>-->
+        </div>
+
+        <!--         About 
+                <div id="aboutPage" data-role="page" data-position="fixed">
+                    <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="aboutPanelButton" data-theme="d">
+        
+                        <ul data-role="listview" data-theme="d" data-divider-theme="a" style="margin-top:-16px;" class="nav-search">
+                            <li data-icon="delete" data-iconpos="left" id="listtt">
+                                <a href="#" data-iconpos="left" data-rel="close">Close menu</a>
+                            </li>
+                            <li data-icon="home" data-iconpos="left" data-filtertext="wai-aria voiceover accessibility screen reader">
+                                <a href="#mainPage">Home</a>
+                            </li>
+                            <li data-icon="star" data-iconpos="left" data-filtertext="wai-aria voiceover accessibility screen reader">
+                                <a onclick="randomPage();">Get A Clu!</a>
+                            </li>
+                            <li data-icon="gear" data-iconpos="left" data-filtertext="wai-aria voiceover accessibility screen reader">
+                                <a href="#settingsPage" data-icon="gear" >Settings</a>
+                            </li>
+                            <li data-icon="gear" data-iconpos="left" data-filtertext="wai-aria voiceover accessibility screen reader">
+                                <a href="" onClick="getHistory()" data-icon="gear" >History</a>
+                            </li>
+                            <li data-icon="info" data-iconpos="left" data-filtertext="wai-aria voiceover accessibility screen reader">
+                                <a href="#aboutPage">About</a>
+                            </li>
+                        </ul>
+        
+                         panel content goes here 
+                    </div> /panel 
+                    <header data-role="header" id="aboutPageHeader" data-theme="d">
+                        <a href="#aboutPanelButton" data-iconpos="notext"></a>
+                        <h1 id="aboutTitle"> ABOUT US</h1>
+                    </header>
+                    <div data-role="content" id="aboutContent" align="center">
+                        <form id="aboutContentForm">
+                            <div id="listcontainerAbout" align="center">
+                                <ul data-role="listview" id="aboutList" data-icon="false" >
+                                    <li id='aboutUS'> <p> CLU IS AN APP CREATED 
+                                            <br>
+                                            BY STUDENTS AT IDC IN HERZELYA <br>
+                                            AS PART OF THE MILAB STUDIO</p></li>
+                                    <li id='loveButton'> WON'T YOU SHOW US<br> SOME LOVE?</li>
+                                    <li><a id='rateButton' onclick="rateUs()"> RATE US <br> WE REALLY APPRECITE IT </a></li>
+                                    <li><a id='friendButton' onclick="tellFriend()"> TELL A FRIEND <br> DON'T KEEP THEM STUPID</a> </li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        
+                 History 
+                <div id="historyPage" data-role="page" data-position="fixed">
+                    <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="historyPanel" data-theme="d">
+        
+                        <ul data-role="listview" data-theme="d" data-divider-theme="a" style="margin-top:-5px;" class="nav-search">
+                            <li data-icon="delete" data-iconpos="left" id="historylisttt">
+                                <a href="#" data-iconpos="left" data-rel="close">Close menu</a>
+                            </li>
+                            <li data-icon="home" data-iconpos="left" data-filtertext="wai-aria voiceover accessibility screen reader">
+                                <a href="#mainPage">Home</a>
+                            </li>
+                            <li data-icon="star" data-iconpos="left" data-filtertext="wai-aria voiceover accessibility screen reader">
+                                <a onclick="randomPage();">Get A Clu!</a>
+                            </li>
+                            <li data-icon="gear" data-iconpos="left" data-filtertext="wai-aria voiceover accessibility screen reader">
+                                <a href="#settingsPage" data-icon="gear" >Settings</a>
+                            </li>
+                            <li data-icon="gear" data-iconpos="left" data-filtertext="wai-aria voiceover accessibility screen reader">
+                                <a href="#" onClick="getHistory()" data-icon="gear" >History</a>
+                            </li>
+                            <li data-icon="info" data-iconpos="left" data-filtertext="wai-aria voiceover accessibility screen reader">
+                                <a href="#aboutPage">About</a>
+                            </li>
+                        </ul>
+        
+                         panel content goes here 
+                    </div> /panel 
+                    <header data-role="header" id="historyPageHeader" data-theme="d">
+                        <nav data-role="navbar" id="historyPageNav">
+                            <a href="#historyPanel" data-icon="bars" data-iconpos="notext"></a>
+                            <p>History</p>
+                        </nav>
+                    </header>
+                    <div data-role="content" id="historyContent" align="center">
+                        <form id="historyContentForm">
+                            <div id="historylistcontainer" >
+                                <ul data-role="listview" id="historyList" data-icon="false"></ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>-->
+        <script src="carousel.js"></script>
+        <script type="text/javascript" src="code.js"></script> 
+    </body>
+</html>
