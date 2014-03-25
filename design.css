@@ -7,9 +7,12 @@
     font-size: 150%;
 }
 #mainContentForm{
-    width: 50%;
-    border: solid 2px blue; 
+    width: 75%;
+    border: solid 2px rgb(9,201,186); 
     /* height: 50%; */
+}
+#mainText{
+    color: rgb(9,201,186);
 }
 
 .ui-input-search:after{
@@ -35,13 +38,13 @@ right : .3125em;
 }
 
 resultPageHeader > p{
-    font-size: 200%;
+    font-size: 150%;
     color: rgb(9,201,186);
     text-align: center;
 }
 
 #resultTitle{
-    font-size: 200%;
+    font-size: 150%;
     text-align: center;
 }
 #resultPageHeader{
@@ -90,12 +93,6 @@ ul.nav-search li{
     text-align: center;
 }*/
 
-
-#popupPhotoLandscape{
-    background-image: url('Neymargoldenball.jpg');
-}
-
-
 #CLUbuttonMain ,#CLUbutton{
     color: wheat;
     text-decoration: none;
@@ -109,10 +106,10 @@ ul.nav-search li{
 }
 
 #resultPanelButton, #menuPanelButton,#aboutPanelButton{
-    background-image: url("bars.png") !important;
+    background-image: url("whiteBarsIcon.png") !important;
     background-color: none !important;
-    border: none !important;
-    box-shadow: none !important;
+    /* border: none !important; */
+    /* box-shadow: none !important; */
     background-repeat: no-repeat;
 }
 
