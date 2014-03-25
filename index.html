@@ -49,7 +49,9 @@
             </div><!-- /panel -->
             <header data-role="header" id="mainPageHeader" data-theme="d">
                 <a href="#menuPanel" id="menuPanelButton"  data-iconpos="notext"></a>
+                <a id="mainLight"></a>
                 <p>Clu</p>
+                
             </header>
 
             <div data-role="content" id="mainContent" align="center">
@@ -96,8 +98,9 @@
             </div><!-- /panel -->
             <header data-role="header" id="resultPageHeader" data-theme="d">
                 <a href="#resultPanel" id="resultPanelButton" data-iconpos="notext"></a>
-                <a href="" onclick="randomPage()" data-icon="star" data-iconpos="notext"></a>
+<!--                <a href="" onclick="randomPage()" data-icon="star" data-iconpos="notext"></a>-->
                 <p id="resultTitle">CLU</p>
+                <a id="resultLight"></a>
                     <input type="search" id="resultSearch"  lang="en" name="name" onkeydown="if (event.keyCode === 13)
                                 getCLU(document.getElementById('name').value)" value="" placeholder="Search"/>               
             </header>
