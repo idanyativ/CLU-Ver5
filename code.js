@@ -1,4 +1,4 @@
-/* 
+        /* 
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -9,7 +9,8 @@ var resultsInString = null;
 var length = 0;
 var value = null;
 var image = null;
-var firstLoad = false;
+var carousels = {};
+var firstTap = true;
 /**
  * 
  * @param inputValue - Get the value from the user
@@ -126,35 +127,35 @@ function getInputValue() {
  * @param {type} image
  * @returns {undefined}
  */
-function buildPage(results, image)
-{
-    $.mobile.changePage('#resultPage');
-    $('#resultSearch').val(getInputValue());
-    $('#resultImages').css({"background-image": "url" + "(" + image + ")", "background-repeat": "no-repeat", "background-size": "100% 100%"});
-    showOnlyValue();
-    $("#resultList").empty();
-//    setPicText();
-    var incomeResults = results;
-    resultsList = document.getElementById("resultList");
-    if (incomeResults !== null)
-    {
-        // Building each reminders record in the page
-        for (var i = 0; i < 3; i++) {
-            $(resultsList).append("<li><a onclick=\"getContext(" + i + ")\" data-iconshadow=\"false\"  data-icon=\"false\" id=\list" + i + ">" + incomeResults.results[i].value + "</a></li>");
-            // console.log(resultsList);
-            $("#list" + i).css({"height": "30px", "text-align": "center", "color": "grey", "background-color": "white", "padding-top": "25px", "font-family": "Geneva, Tahoma, Verdana, sans-serif", "text-overflow": "ellipsis"});
-            count++;
-        }
-
-    }
-    $('#resultPage').html();
-    $('#listcontainer').html(resultsList);
-    //$('#listcontainer').trigger("create");//refreashing dynamically
-    $('#resultPage a').on('click', function(e) {
-        e.preventDefault();
-    });
-}
-;
+//function buildPage(results, image)
+//{
+//    $.mobile.changePage('#resultPage');
+//    $('#resultSearch').val(getInputValue());
+//    $('#resultImages').css({"background-image": "url" + "(" + image + ")", "background-repeat": "no-repeat", "background-size": "100% 100%"});
+//    showOnlyValue();
+//    $("#resultList").empty();
+////    setPicText();
+//    var incomeResults = results;
+//    resultsList = document.getElementById("resultList");
+//    if (incomeResults !== null)
+//    {
+//        // Building each reminders record in the page
+//        for (var i = 0; i < 3; i++) {
+//            $(resultsList).append("<li><a onclick=\"getContext(" + i +")\" data-iconshadow=\"false\"  data-icon=\"false\" id=\list" + i + ">" + incomeResults.results[i].value + "</a></li>");
+//            // console.log(resultsList);
+//            $("#list" + i).css({"height": "30px", "text-align": "center", "color": "grey", "background-color": "white", "padding-top": "25px", "font-family": "Geneva, Tahoma, Verdana, sans-serif", "text-overflow": "ellipsis"});
+//            count++;
+//        }
+//
+//    }
+//    $('#resultPage').html();
+//    $('#listcontainer').html(resultsList);
+//    //$('#listcontainer').trigger("create");//refreashing dynamically
+//    $('#resultPage a').on('click', function(e) {
+//        e.preventDefault();
+//    });
+//}
+//;
 
 function buildPage2(results, image)
 {
@@ -162,7 +163,7 @@ function buildPage2(results, image)
     $('#resultSearch').val(getInputValue());
     $('#resultImages').css({"background-image": "url" + "(" + image + ")", "background-repeat": "no-repeat", "background-size": "100% 100%"});
     showOnlyValue();
-    var carousels = {};
+    
     $("#resultContent").empty();
 //    setPicText();
     var incomeResults = results;
@@ -181,7 +182,7 @@ function buildPage2(results, image)
             //    $("#listBricks0 > li").css({"background-image": "url" + "(\"delListItem.png\")", "background-repeat": "no-repeat","background-size": " 20% 100%","height":"100%","backgroung":"green"});
 
             $(resultsList2).append("<li id=\"pane2\"><a>" + result.results[i].value + "</a></li>");
-            $("#listBricks" + i + " > " + "#pane2").css({"height": "100%","color":"grey","font-weight":"bold","margin-top":"1%","font-style":"italic","font-size":"150%"});
+            $("#listBricks" + i + " > " + "#pane2").css({"height": "100%","color":"grey","font-weight":"bold","font-style":"italic","font-size":"150%"});
 
             //$("#pane2").css({"height":"100%"});
             $(resultsList2).append("<li id=\"pane3\">Throw This CLU</li>");
@@ -197,61 +198,17 @@ function buildPage2(results, image)
 //                $("#carousel"+i + " " +"li").css({"float": "left","overflow": "hidden","-webkit-transform-style": "preserve-3d","-webkit-transform": "translate3d(0,0,0)"});
 //                $("#carousel"+i + " " +"ul.pane2").css({"background": "red"});
             carousels[i].init();
+            
+            
         }
     }
     $('#resultPage').html();
-//        $('#listcontainer').html(resultsList);
     $('#resultPage').trigger("create");//refreashing dynamically
     $('#resultPage a').on('click', function(e) {
         e.preventDefault();
     });
 }
 ;
-//function buildPage2(res, image)
-//{
-//    $.mobile.changePage('#resultPage');
-//    $('#resultSearch1').val(getInputValue());
-//    $('#resultImages').css({"background-image": "url" + "(" + image + ")", "background-repeat": "no-repeat", "background-size": "100% 100%"});
-//    showOnlyValue();
-//var carousels= {};
-//
-//    var listValues = res;
-//  var  holder = document.getElementById("resultContentForm");
-////$(resultsList).append("<ul id=\idan" + 1 + ">");
-////            var resultsList2 = document.getElementById("idan" + 1);
-////            $(resultsList2).append("<li class=\"pane1\"><a>" + "yes" + "</a></li>");
-////            $(resultsList2).append("<li class=\"pane2\"><a>" + "no" + "</a></li>");
-////            $(resultsList2).append("<li class=\"pane3\"><a>" + "may" + "</a></li>");
-////            $(resultsList).append("</ul>");
-//    if (listValues !== null)
-//    {
-//        for (var i = 0; i < 3; i++) {
-//          //  alert(i);
-//            $(holder).append("<div id=\carousel" + i + ">"+"</div>");
-//            var  resultsList = document.getElementById("carousel"+i);
-//            $(resultsList).append("<ul id=\idan" + i + ">");
-//            var resultsList2 = document.getElementById("idan" + i);
-//            $(resultsList2).append("<li class=\"pane1\">white</li>");
-//            $(resultsList2).append("<li class=\"pane2\"><a>" + result.results[i] + "</a></li>");
-////            $(resultsList2).append("<li class=\"pane2\"><a>" + result.results[i].value + "</a></li>");
-//            $(resultsList2).append("<li class=\"pane3\">white</li>");
-//            $(resultsList).append("</ul>");
-//            carousels[i] = new Carousel("#carousel"+i);
-//            carousels[i].init();
-//        }
-//        
-//    console.log("asdasdasdddddddddddddddddddd=" + resultsList);
-//    }
-////    console.log("listString=" + resultsList);
-//    $('#resultPage').html();
-////    $('#listcontainer').html(resultsList);
-//    $('#listcontainer').trigger("create");//refreashing dynamically
-//    $('#resultPage a').on('click', function(e) {
-//        e.preventDefault();
-//    });
-//}
-//;
-
 //    $(document).on("swiperight", "li", function(event) {
 //        console.log("User Search Next Value : " + result.results[$(this).index()]);
 //        searchItem(this, result.results[$(this).index()]);
@@ -317,32 +274,19 @@ function buildPage2(results, image)
 //            console.log(resultsList);
 //        }
 //    });
-//function getContext(i) {
-//    var action = "getContext(" + i + ")";
-//    if ($('#list' + i).attr("onClick") === action) {
-//        $('#list' + i).text(result.results[i].context);
-//        $('#list' + i).attr("onClick", "getValue(" + i + ")");
-//        $('#list' + i).css({"background-color": "white", "color": "#85C2FF"});
-//    }
-//
-//    console.log(i);
-//    console.log(resultsList);
-//}
 
 function getContext(i) {
-//    alert(i);
-//    var action = "getContext(" + i + ")";
-//    var valueAndContext = getInputValue(); 
-//    console.log(result.results);
-//        if ($('#list' + i).attr("onClick") === action) {
+if(firstTap){
     $('#lineup').html(result.results[i].value + " - " + result.results[i].context).css({"font-size": "100%"});
     $('#lineup').css({top: '70%'});
     $('#lineup').animate({height: '30%'});
     $('#lineup').attr("onClick", "showOnlyValue()");
-//    $('#lineup').css({top: '85%'});
-//        }
-//        console.log(i);
-//        console.log(resultsList);
+    firstTap = !firstTap;
+}else{
+    $('#lineup').attr("onClick", "showOnlyValue()");
+    firstTap = !firstTap;
+        showOnlyValue();
+}
 }
 
 function showOnlyValue() {
@@ -365,52 +309,74 @@ function showOnlyValue() {
     }
 }
 
-
-
-
-//function getValue(i) {
-//    var pp = "getValue(" + i + ")";
-//    if ($('#list' + i).attr("onClick") === pp) {
-//        $('#list' + i).text(result.results[i].value);
-//        $('#list' + i).attr("onClick", "getContext(" + i + ")");
-//        $('#list' + i).css({"background-color": setColor(i), "color": "white"});
-//    }
-//    console.log(i);
-//    console.log(resultsList);
-//}
-
 function cutResults(res) {
     var newRes = res;
     newRes.results = newRes.results.splice(0, 3);
     return newRes;
 }
 
-function appendToList() {
+//function appendToList() {
 //    if (count !== length) {
-    $("#resultList").append("<li><a onclick=\"getContext(" + count + ")\" id=\list" + count + ">" + result.results[count].value + "</a></li>");
-//        var color = setColor(count);
-    $("#list" + count).css({"text-align": "center", "color": "grey", "background-color": "white", "padding": "25px", "font-family": "Geneva, Tahoma, Verdana, sans-serif", "text-overflow": "ellipsis"});
-    //  $("#list" + count).css({"height": "30px", "text-align": "center", "color": "white", "background-color": color, "padding-top": "25px","text-overflow": "ellipsis"});
-    count++;
-    console.log("count:" + count);
-//    }
-}
+//        var holder = document.getElementById("resultContent");
+//            $(holder).append("<div id=\carousel" + count + ">" + "</div>");
+//            var resultsList = document.getElementById("carousel" + count);
+//            $(resultsList).append("<ul id=\listBricks" + count + ">");
+//            $("#listBricks" + count).css({"height": "50px", "text-align": "center"});
+//            var resultsList2 = document.getElementById("listBricks" + count);
+//            $(resultsList2).append("<li id=\"pane1\">Get New CLU</li>");
+//            $("#listBricks" + count + " > " + "#pane1").css({"background": "rgb(72,182,233)","background-image": "url(searchListItem.png)", "background-repeat": "no-repeat", "background-size": " 20% 100%", "height": "100%","font-weight":"bold","font-style":"italic","font-size":"150%", "border": "solid 1px black"});
+//            //    $("#listBricks0 > li").css({"background-image": "url" + "(\"delListItem.png\")", "background-repeat": "no-repeat","background-size": " 20% 100%","height":"100%","backgroung":"green"});
+//
+//            $(resultsList2).append("<li id=\"pane2\"><a>" + result.results[count].value + "</a></li>");
+//            $("#listBricks" + count + " > " + "#pane2").css({"background-size": " 20% 100%", "height": "100%","font-weight":"bold","font-style":"italic","font-size":"150%", "border": "solid 1px black"});
+////            ({"height": "100%","color":"grey","font-weight":"bold","margin-top":"1%","font-style":"italic","font-size":"150%"});
+//
+//            //$("#pane2").css({"height":"100%"});
+//            $(resultsList2).append("<li id=\"pane3\">Throw This CLU</li>");
+//           // $("#pane3").css({"background-image": "url" + "(\"searchListItem.PNG\")", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%", "backgroung": "blue"});
+//           $("#listBricks" + count + " > " + "#pane3").css({"background": "rgb(250,20,20)","background-image": "url(delListItem.png)", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%","font-weight":"bold","font-style":"italic","font-size":"150%", "border": "solid 1px black"});
+//
+//            $(resultsList).append("</ul>");
+//            carousels[count] = new Carousel("#carousel" + count);
+////               $("#carousel" + i).css({"height":"50px","padding": "0","margin":"0","position": "relative","overflow": "hidden","width": "100%","-webkit-backface-visibility": "hidden","-webkit-transform": "translate3d(0,0,0) scale3d(1,1,1)","-webkit-transform-style": "preserve-3d"});
+////                $("#carousel"+i + " " + "ul.animate").css({"-webkit-transition": "all .3s","-moz-transition": "all .3s","-o-transition": "all .3s","transition":" all .3s"});
+////                $("#carousel"+i + " " +"ul").css({ "-webkit-transform": "translate3d(0%,0,0) scale3d(1,1,1)"," -moz-transform":"translate3d(0%,0,0) scale3d(1,1,1)","-ms-transform":"translate3d(0%,0,0) scale3d(1,1,1)","-o-transform":"translate3d(0%,0,0) scale3d(1,1,1)","transform": "translate3d(0%,0,0) scale3d(1,1,1)","overflow": "hidden","-webkit-backface-visibility": "hidden","-webkit-transform-style": "preserve-3d"});
+////                $("#carousel"+i +" " + "ul").css({"-webkit-box-shadow":"0 0 20px rgba(0,0,0,.2)"," box-shadow":"0 0 20px rgba(0,0,0,.2)","position": "relative"});
+////                $("#carousel"+i + " " +"li").css({"float": "left","overflow": "hidden","-webkit-transform-style": "preserve-3d","-webkit-transform": "translate3d(0,0,0)"});
+////                $("#carousel"+i + " " +"ul.pane2").css({"background": "red"});
+//            carousels[count].init(); 
+//        }
+//    $('#resultPage').trigger("refresh");//refreashing dynamically
+//    count++;
+//    console.log("count:" + count);
+////    }
+//}
+
 
 function removeFromList(index) {
     console.log(index);
-//    $("#list" + index).animate({width: 'toggle'}, function() {
-//        // And fade in the menu
-//        $("#list" + index).fadeOut();
-//    });
-    $("#list" + index).remove();
-    $("#list" + index).css("height", 0);
-
+    $("#carousel" + index).remove();
+    $('#resultPage').trigger("refresh");//refreashing dynamically
 }
 
-
-
 function randomPage() {
-    getCLU("Nikola Tesla");
+    var randomvalue = Math.floor((Math.random()*4)+1);
+    console.log(randomvalue);
+    switch(randomvalue){
+        case 1:
+            getCLU("einstein");
+            break;
+        case 2:
+            getCLU("cola");
+            break;
+        case 3:
+            getCLU("rihanna");
+            break;
+        case 4:
+            getCLU("google");
+            break;
+    }
+    
 }
 
 function startOver() {
@@ -539,3 +505,4 @@ function searchItem(item, nextValue) {
         menu.fadeIn();
     });
 }
+

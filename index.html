@@ -14,6 +14,7 @@
 
 
         <!-- CSS -->
+        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
         <link rel="stylesheet" type="text/css" href="design.css" />
         <link rel="stylesheet" type="text/css" href="my.css" />
@@ -38,7 +39,7 @@
                         <a href="#mainPage">Home</a>
                     </li>
                     <li data-icon="star" data-filtertext="wai-aria voiceover accessibility screen reader">
-                        <a id="randomPage" onclick="randomPage();">Get A Clu!</a>
+                        <a id="randomPageMain" onclick="randomPage();">Get A Clu!</a>
                     </li>
                     <li data-icon="info" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a href="#aboutPage">About</a>
@@ -55,11 +56,12 @@
             </header>
 
             <div data-role="content" id="mainContent" align="center">
-                <h1 id="mainText"> Simple Knowledge </h1>
-                <p id="mainTitle">Get A CLU About... </p>
+                <h1 id="mainText"> Lets </h1>
+<!--                 <p id="subTitle"> </p>-->
+                <p id="mainTitle">Get A CLU </p>
                 <form id="mainContentForm" > 
 
-                    <input type="search" id="mainSearch" placeholder="Search a new Term" value="" lang="en" onkeydown="if (event.keyCode === 13)
+                    <input type="search" id="mainSearch" placeholder="About..." value="" lang="en" onkeydown="if (event.keyCode === 13)
                                 getCLU(document.getElementById('mainSearch').value)"  autocomplete="on">
                     <!--                    <div id="CLUbutton">
                                             <a href="" id="CLUbuttonMain" onclick="getCLU(document.getElementById('mainSpeech').value)"><span> GET A CLUE</span> </a>   
@@ -74,20 +76,11 @@
             <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="resultPanel" data-theme="d">
 
                 <ul data-role="listview" data-theme="d" data-divider-theme="a" style="margin-top:-16px;" class="nav-search">
-                    <li data-icon="delete">
-                        <a href="#" data-rel="close">Close menu</a>
-                    </li>
-                    <li data-icon="home" data-filtertext="wai-aria voiceover accessibility screen reader">
+              <li data-icon="home" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a href="#mainPage">Home</a>
                     </li>
                     <li data-icon="star" data-filtertext="wai-aria voiceover accessibility screen reader">
-                        <a onclick="randomPage();">Get A Clu!</a>
-                    </li>
-                    <li data-icon="gear" data-filtertext="wai-aria voiceover accessibility screen reader">
-                        <a href="#settingsPage">Settings</a>
-                    </li>
-                    <li data-icon="gear" data-filtertext="wai-aria voiceover accessibility screen reader">
-                        <a href="" onClick="getHistory()"> History </a>
+                        <a id="randomPageResult" onclick="randomPage();">Get A Clu!</a>
                     </li>
                     <li data-icon="info" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a href="#aboutPage">About</a>

@@ -5,7 +5,7 @@ html,body, .ui-link{
     color : grey;
 }
 #mainPageHeader{
-    background-color: rgb(9,201,186);
+    background-color: rgb(1,184,222);
 }
 #mainPageHeader p{
     color: white;
@@ -14,11 +14,18 @@ html,body, .ui-link{
 }
 #mainContentForm{
     width: 75%;
-    border: solid 2px rgb(9,201,186); 
+    border: solid 2px rgb(1,184,222);; 
     /* height: 50%; */
 }
 #mainText{
-    color: rgb(9,201,186);
+    color: rgb(13,136,210);
+    font-weight: bold;
+    font-size: 200%;
+}
+#mainTitle{
+    color: rgb(13,136,210);
+    font-weight: bold;
+     font-size: 200%;
 }
 #resultLight, #mainLight{
     background-image: url("lightBlue.png") !important;
@@ -36,10 +43,10 @@ right : .3125em;
 .ui-btn, label.ui-btn{
     border: none;
 }
-#mainContent > p{
+/*#mainContent > p{
     font-size: 150%;
     color: rgb(9,201,186);
-}
+}*/
 
 #CLUbutton,#speechToolMain,#mainSpeech {
         font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
@@ -60,7 +67,7 @@ resultPageHeader > p{
     text-align: center;
 }
 #resultPageHeader{
-    background-color: rgb(9,193,181);
+    background-color: rgb(1,184,222);
     /* width: 50%; */
     /* height: 5%; */
     /* top: 5%; */
@@ -69,10 +76,13 @@ resultPageHeader > p{
 .ui-input-search:after{
     /*   width:18px;
        height:18px;*/
-    left: 85%;
+    left: 78%;
     opacity : 100;
     // right : .3125em;
     /*   margin-left: -50px;*/
+}
+.ui-input-search input{
+    padding-left: 5%;
 }
 #resultSearch{
     font-weight: bolder;
@@ -81,9 +91,9 @@ resultPageHeader > p{
 
 
 
-
-
-
+bosy {
+font-family: 'Lato', sans-serif;
+}
 
 #aboutPageHeader{
     background-color: #3399FF;
