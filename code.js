@@ -1,4 +1,4 @@
-        /* 
+/* 
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -163,140 +163,46 @@ function buildPage2(results, image)
     $('#resultSearch').val(getInputValue());
     $('#resultImages').css({"background-image": "url" + "(" + image + ")", "background-repeat": "no-repeat", "background-size": "100% 100%"});
     showOnlyValue();
-    
+
     $("#resultContent").empty();
 //    setPicText();
     var incomeResults = results;
-    //   resultsList = document.getElementById("listcontainer");
     if (incomeResults !== null)
     {
-        var holder = document.getElementById("resultContent");
+//        var holder = document.getElementById("resultContent");
         for (var i = 0; i < 3; i++) {
-            $(holder).append("<div id=\carousel" + i + ">" + "</div>");
-            var resultsList = document.getElementById("carousel" + i);
-            $(resultsList).append("<ul id=\listBricks" + i + ">");
-            $("#listBricks" + i).css({"height": "50px", "text-align": "center", "border": "solid 1px black"});
-            var resultsList2 = document.getElementById("listBricks" + i);
-            $(resultsList2).append("<li id=\"pane1\">Get New CLU</li>");
-            $("#listBricks" + i + " > " + "#pane1").css({"background": "rgb(72,182,233)","background-image": "url(searchListItem.png)", "background-repeat": "no-repeat", "background-size": " 20% 100%", "height": "100%","font-weight":"bold","font-style":"italic","font-size":"150%"});
-            //    $("#listBricks0 > li").css({"background-image": "url" + "(\"delListItem.png\")", "background-repeat": "no-repeat","background-size": " 20% 100%","height":"100%","backgroung":"green"});
-
-            $(resultsList2).append("<li id=\"pane2\"><a>" + result.results[i].value + "</a></li>");
-            $("#listBricks" + i + " > " + "#pane2").css({"height": "100%","color":"grey","font-weight":"bold","font-style":"italic","font-size":"150%"});
-
-            //$("#pane2").css({"height":"100%"});
-            $(resultsList2).append("<li id=\"pane3\">Throw This CLU</li>");
-           // $("#pane3").css({"background-image": "url" + "(\"searchListItem.PNG\")", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%", "backgroung": "blue"});
-           $("#listBricks" + i + " > " + "#pane3").css({"background": "rgb(250,20,20)","background-image": "url(delListItem.png)", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%","font-weight":"bold","font-style":"italic","font-size":"150%"});
-
-            $(resultsList).append("</ul>");
-            carousels[i] = new Carousel("#carousel" + i);
-//               $("#carousel" + i).css({"height":"50px","padding": "0","margin":"0","position": "relative","overflow": "hidden","width": "100%","-webkit-backface-visibility": "hidden","-webkit-transform": "translate3d(0,0,0) scale3d(1,1,1)","-webkit-transform-style": "preserve-3d"});
-//                $("#carousel"+i + " " + "ul.animate").css({"-webkit-transition": "all .3s","-moz-transition": "all .3s","-o-transition": "all .3s","transition":" all .3s"});
-//                $("#carousel"+i + " " +"ul").css({ "-webkit-transform": "translate3d(0%,0,0) scale3d(1,1,1)"," -moz-transform":"translate3d(0%,0,0) scale3d(1,1,1)","-ms-transform":"translate3d(0%,0,0) scale3d(1,1,1)","-o-transform":"translate3d(0%,0,0) scale3d(1,1,1)","transform": "translate3d(0%,0,0) scale3d(1,1,1)","overflow": "hidden","-webkit-backface-visibility": "hidden","-webkit-transform-style": "preserve-3d"});
-//                $("#carousel"+i +" " + "ul").css({"-webkit-box-shadow":"0 0 20px rgba(0,0,0,.2)"," box-shadow":"0 0 20px rgba(0,0,0,.2)","position": "relative"});
-//                $("#carousel"+i + " " +"li").css({"float": "left","overflow": "hidden","-webkit-transform-style": "preserve-3d","-webkit-transform": "translate3d(0,0,0)"});
-//                $("#carousel"+i + " " +"ul.pane2").css({"background": "red"});
-            carousels[i].init();
-            
-            
+            addElement(i);
         }
+        console.log("count"  + count);
     }
     $('#resultPage').html();
     $('#resultPage').trigger("create");//refreashing dynamically
     $('#resultPage a').on('click', function(e) {
         e.preventDefault();
     });
-}
-;
-//    $(document).on("swiperight", "li", function(event) {
-//        console.log("User Search Next Value : " + result.results[$(this).index()]);
-//        searchItem(this, result.results[$(this).index()]);
-////    
-////    console.log("User Search Next Value : "+ result.results[$(this).index()]);
-////    searchItem(this, result.results[$(this).index()].value);
-//
-//    });
-////$(document).on("swipeleft", "li", function(e) {
-////    removeItem(this);
-//////     setTimeout(function(){alert("Hello")},3000);
-//////     setTimeout(function(){appendToList()}(),5000000);
-////
-//////   removeItem(this);
-//////           defer.then(appendToList());
-//////   console.log("countaaaaaaaaaaaaaaaaaa:" + count);
-//////   console.log("length:" + length);
-//////           appendToList();
-//////        $("#resultList").listview("refresh");
-//////        console.log("count:" + count);
-//////        console.log("index:" + index);
-//////        console.log("length:" + length);
-//////        console.log("removed:" + removed);
-//////        index++;
-//////        console.log(resultsList);
-////});
-//    var index = 0;
-//    var removed = 0;
-//    $(document).on("swipeleft", "li", function(event) {
-//        event.preventDefault();
-//        var projIndex = $(this).index();
-//
-//        var listitem = $(this),
-//                // These are the classnames used for the CSS transition
-//                dir = event.type === "swipeleft" ? "left" : "right",
-////             Check if the browser supports the transform (3D) CSS transition
-//                transition = $.support.cssTransform3d ? dir : false;
-//        console.log(transition);
-////    if (transition) {
-////        console.log(transition);
-////        $(this).removeClass("ui-btn-down-d").addClass(transition);
-////    }
-//        if (removed === length - 1) {
-//            removeFromList(projIndex);
-//            console.log("index:" + index);
-//            console.log("length:" + length);
-//            console.log("removed:" + removed);
-//            $("#resultList").append("<li  data-iconshadow=\"flase\"><a id=\"listWiki\" onclick=\"goToWiki(getValueZ())\" >" + "Dont Have A CLU? GO TO WIKI" + "</a></li>");
-//            $("#listWiki").css({"height": "30px", "text-align": "center", "color": "white", "background-color": setColor(length + 1), "padding-top": "25px"});
-//            $("#resultList").append("<li data-icon=\"back\" data-iconpos=\"bottom\"><a id=\"listStartOver\" onclick=\"startOver( )\" >" + "Start Over" + "</a></li>");
-//            $("#listStartOver").css({"height": "30px", "text-align": "center", "color": "white", "background-color": setColor(length + 2), "padding-top": "25px"});
-//            $("#resultList").listview("refresh");
-//        } else {
-//            removeFromList(projIndex);
-//            removed++;
-//            appendToList();
-//            $("#resultList").listview("refresh");
-//            console.log("count:" + count);
-//            console.log("index:" + index);
-//            console.log("length:" + length);
-//            console.log("removed:" + removed);
-//            index++;
-//            console.log(resultsList);
-//        }
-//    });
+};
 
 function getContext(i) {
-if(firstTap){
-    $('#lineup').html(result.results[i].value + " - " + result.results[i].context).css({"font-size": "100%"});
-    $('#lineup').css({top: '70%'});
-    $('#lineup').animate({height: '30%'});
-    $('#lineup').attr("onClick", "showOnlyValue()");
-    firstTap = !firstTap;
-}else{
-    $('#lineup').attr("onClick", "showOnlyValue()");
-    firstTap = !firstTap;
+    if (firstTap) {
+        $('#lineup').html(result.results[i].value + " - " + result.results[i].context).css({"font-size": "100%"});
+        $('#lineup').css({top: '70%'});
+        $('#lineup').animate({height: '30%'});
+        $('#lineup').attr("onClick", "showOnlyValue()");
+        firstTap = !firstTap;
+    } else {
+        $('#lineup').attr("onClick", "showOnlyValue()");
+        firstTap = !firstTap;
         showOnlyValue();
-}
+    }
 }
 
 function showOnlyValue() {
-//    alert("show");
     $('#lineup').css({
         "color": "white",
         "font-size": "2em",
         "background-color": "black",
         "opacity": "0.6",
-         "height": "15%",
+        "height": "15%",
         "width": "100%",
         "bottom": "0px",
         "position": "relative",
@@ -315,54 +221,17 @@ function cutResults(res) {
     return newRes;
 }
 
-//function appendToList() {
-//    if (count !== length) {
-//        var holder = document.getElementById("resultContent");
-//            $(holder).append("<div id=\carousel" + count + ">" + "</div>");
-//            var resultsList = document.getElementById("carousel" + count);
-//            $(resultsList).append("<ul id=\listBricks" + count + ">");
-//            $("#listBricks" + count).css({"height": "50px", "text-align": "center"});
-//            var resultsList2 = document.getElementById("listBricks" + count);
-//            $(resultsList2).append("<li id=\"pane1\">Get New CLU</li>");
-//            $("#listBricks" + count + " > " + "#pane1").css({"background": "rgb(72,182,233)","background-image": "url(searchListItem.png)", "background-repeat": "no-repeat", "background-size": " 20% 100%", "height": "100%","font-weight":"bold","font-style":"italic","font-size":"150%", "border": "solid 1px black"});
-//            //    $("#listBricks0 > li").css({"background-image": "url" + "(\"delListItem.png\")", "background-repeat": "no-repeat","background-size": " 20% 100%","height":"100%","backgroung":"green"});
-//
-//            $(resultsList2).append("<li id=\"pane2\"><a>" + result.results[count].value + "</a></li>");
-//            $("#listBricks" + count + " > " + "#pane2").css({"background-size": " 20% 100%", "height": "100%","font-weight":"bold","font-style":"italic","font-size":"150%", "border": "solid 1px black"});
-////            ({"height": "100%","color":"grey","font-weight":"bold","margin-top":"1%","font-style":"italic","font-size":"150%"});
-//
-//            //$("#pane2").css({"height":"100%"});
-//            $(resultsList2).append("<li id=\"pane3\">Throw This CLU</li>");
-//           // $("#pane3").css({"background-image": "url" + "(\"searchListItem.PNG\")", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%", "backgroung": "blue"});
-//           $("#listBricks" + count + " > " + "#pane3").css({"background": "rgb(250,20,20)","background-image": "url(delListItem.png)", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%","font-weight":"bold","font-style":"italic","font-size":"150%", "border": "solid 1px black"});
-//
-//            $(resultsList).append("</ul>");
-//            carousels[count] = new Carousel("#carousel" + count);
-////               $("#carousel" + i).css({"height":"50px","padding": "0","margin":"0","position": "relative","overflow": "hidden","width": "100%","-webkit-backface-visibility": "hidden","-webkit-transform": "translate3d(0,0,0) scale3d(1,1,1)","-webkit-transform-style": "preserve-3d"});
-////                $("#carousel"+i + " " + "ul.animate").css({"-webkit-transition": "all .3s","-moz-transition": "all .3s","-o-transition": "all .3s","transition":" all .3s"});
-////                $("#carousel"+i + " " +"ul").css({ "-webkit-transform": "translate3d(0%,0,0) scale3d(1,1,1)"," -moz-transform":"translate3d(0%,0,0) scale3d(1,1,1)","-ms-transform":"translate3d(0%,0,0) scale3d(1,1,1)","-o-transform":"translate3d(0%,0,0) scale3d(1,1,1)","transform": "translate3d(0%,0,0) scale3d(1,1,1)","overflow": "hidden","-webkit-backface-visibility": "hidden","-webkit-transform-style": "preserve-3d"});
-////                $("#carousel"+i +" " + "ul").css({"-webkit-box-shadow":"0 0 20px rgba(0,0,0,.2)"," box-shadow":"0 0 20px rgba(0,0,0,.2)","position": "relative"});
-////                $("#carousel"+i + " " +"li").css({"float": "left","overflow": "hidden","-webkit-transform-style": "preserve-3d","-webkit-transform": "translate3d(0,0,0)"});
-////                $("#carousel"+i + " " +"ul.pane2").css({"background": "red"});
-//            carousels[count].init(); 
-//        }
-//    $('#resultPage').trigger("refresh");//refreashing dynamically
-//    count++;
-//    console.log("count:" + count);
-////    }
-//}
-
-
-function removeFromList(index) {
-    console.log(index);
-    $("#carousel" + index).remove();
+function removeFromList(el) {
+    //console.log("removed number" + index);
+    console.log("asdasd" + el);
+    $(el).remove();
     $('#resultPage').trigger("refresh");//refreashing dynamically
 }
 
 function randomPage() {
-    var randomvalue = Math.floor((Math.random()*4)+1);
+    var randomvalue = Math.floor((Math.random() * 4) + 1);
     console.log(randomvalue);
-    switch(randomvalue){
+    switch (randomvalue) {
         case 1:
             getCLU("einstein");
             break;
@@ -376,7 +245,7 @@ function randomPage() {
             getCLU("google");
             break;
     }
-    
+
 }
 
 function startOver() {
@@ -385,124 +254,46 @@ function startOver() {
     getCLU(getInputValue());
 }
 
-//function getHistory() {
-//    $.mobile.changePage('#historyPage');
-//    historyList = document.getElementById("historyList");
-//    for (var i = 0; i < numberOfSearch; i++) {
-//        $(historyList).append("<li><a onClick=\"getCLU(historySearches[" + i + "])\">" + historySearches[i] + "</a></li>");
-//        console.log(historyList);
-//    }
-//}
-
-//function fullScreen(url) {
-//    var myWindow = window.open(url, "_self", 'scrollbars=yes,resizable=yes,fullscreen=yes');
-//}
-
-//$("#resultTitle").text(getInputValue());
-
-//function setColor(i) {
-//    if (i % 2 === 0) {
-//        console.log(i + "=" + "blue");
-//        return "#3399FF";
-//    } else {
-//        console.log(i + "=" + "blueee");
-//    }
-//    return "#85C2FF";
-//}
-
-//function setPicText() {
-//    $("#img11").text("asdasd");
-//    var img1 = document.getElementById(getInputValue());
-//    var img2 = document.getElementById("img2");
-//    var ctx = img1.getContext("2d");
-//    ctx.clearRect(0, 0, $('#resultPage').width(), $('#resultPage').height());
-//    ctx.font = "10px Arial";
-//    ctx.fillText("pic " + getInputValue() + "1", 80, 80);
-//    ctx = img2.getContext("2d");
-//    ctx.clearRect(50, 50, $('#resultPage').width(), $('#resultPage').height());
-//    ctx.font = "10px Arial";
-//    ctx.fillText("pic " + getInputValue() + "2", 80, 80);
-//}
-
-function removeItem(item) {
-    var li = $(item);
-    var contents = $(li.children()[0]);
-    var item = contents.text(); // Get the item value
-    var itemId = contents.attr("id");
-
-    var delButton = $("<a>").text("Yes").click(function(e) {
-        // Delete button handler, fade out menu and remove the row
-        e.stopPropagation();
-        menu.fadeOut("slow", function() {
-            li.remove();
-            // Do something in order to delete item, send request to server or similar
-            // alert("Deleted " + item + " with ID = " + itemId);
-            appendToList();
-        });
-    });
-    var cancelButton = $("<a>").text("No").click(function(e) {
-        // Cancel Handler, remove menu and show the item
-        e.stopPropagation();
-        menu.fadeOut("slow", function() {
-            contents.animate({width: 'toggle'}, function() {
-                menu.remove();
-            });
-        });
-    });
-
-    // Create the menu
-    var menu = $("<span />").append("Remove Value? - ").append(delButton).append(" | ").append(cancelButton)
-            .css("display", "none")
-            .addClass("menu");
-
-    // Insert the menu
-    contents.after(menu);
-    // Slide the item 
-    contents.animate({width: 'toggle'}, function() {
-        // And fade in the menu
-        menu.fadeIn();
-    });
+function getAnotherValue(toRemove) {
+    // no more words to show
+    if (count == length-1) {
+        alert("no more words");
+        removeFromList(toRemove);
+    } else {
+       // alert("id" + $(this));
+        console.log("this" + $(this).value);
+        removeFromList(toRemove);
+        addElement(count);
+    }
 }
 
-function searchItem(item, nextValue) {
-    var li = $(item);
-    console.log(li);
-    var contents = $(li.children()[0]);
-    var item = contents.text(); // Get the item value
-    var itemId = contents.attr("id");
-
-    var delButton = $("<a>").text("Yes").click(function(e) {
-        // Delete button handler, fade out menu and remove the row
-        e.stopPropagation();
-        menu.fadeOut("slow", function() {
-            li.remove();
-            // Do something in order to delete item, send request to server or similar
-            //   alert("Deleted " + item + " with ID = " + itemId);
-            getCLU(nextValue);
-
-        });
-    });
-    var cancelButton = $("<a>").text("No").click(function(e) {
-        // Cancel Handler, remove menu and show the item
-        e.stopPropagation();
-        menu.fadeOut("slow", function() {
-            contents.animate({width: 'toggle'}, function() {
-                menu.remove();
-            });
-        });
-    });
-
-    // Create the menu
-    var menu = $("<span />").append("Search Next Value? - ").append(delButton).append(" | ").append(cancelButton)
-            .css("display", "none")
-            .addClass("menu");
-
-    // Insert the menu
-    contents.after(menu);
-    // Slide the item 
-    contents.animate({width: 'toggle'}, function() {
-        // And fade in the menu
-        menu.fadeIn();
-    });
-}
-
+function addElement(nextSeq){
+    var holder = document.getElementById("resultContent");
+            $(holder).append("<div id=\carousel" + nextSeq + ">" + "</div>");
+            var resultsList = document.getElementById("carousel" + nextSeq);
+            $(resultsList).append("<ul id=\listBricks" + nextSeq + ">");
+            $("#listBricks" + nextSeq).css({"height": "50px", "text-align": "center", "border": "solid 1px black"});
+            var resultsList2 = document.getElementById("listBricks" + nextSeq);
+            $(resultsList2).append("<li id=\"pane1\">Get New CLU</li>");
+            $("#listBricks" + nextSeq + " > " + "#pane1").css({"background": "rgb(72,182,233)", "background-image": "url(searchListItem.png)", "background-repeat": "no-repeat", "background-size": " 20% 100%", "height": "100%", "font-weight": "bold", "font-style": "italic", "font-size": "150%"});
+            $(resultsList2).append("<li id=\"pane2\"><a>" + result.results[nextSeq].value + "</a></li>");
+            $("#listBricks" + nextSeq + " > " + "#pane2").css({"height": "100%", "color": "grey", "font-weight": "bold", "font-style": "italic", "font-size": "150%"});
+            $(resultsList2).append("<li id=\"pane3\">Throw This CLU</li>");
+            $("#listBricks" + nextSeq + " > " + "#pane3").css({"background": "rgb(250,20,20)", "background-image": "url(delListItem.png)", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%", "font-weight": "bold", "font-style": "italic", "font-size": "150%"});
+            $(resultsList).append("</ul>");
+            carousels[nextSeq] = new Carousel("#carousel" + nextSeq);
+            
+//            $("#carousel" + nextSeq).css({"padding": "0","margin":"0","position":"relative"});
+//            $("#carousel" + nextSeq + " ul").css({"padding": "0","margin":"0","position":"relative"});
+//            $("#carousel" + nextSeq + " li").css({"padding": "0","margin":"0","position":"relative"});            
+//            $("#carousel" + nextSeq).css({"overflow": "hidden","background": "white","width": "100%","-webkit-backface-visibility": "hidden","-webkit-transform": "translate3d(0,0,0) scale3d(1,1,1)","-webkit-transform-style": "preserve-3d"});
+//            $("ul.animate").css({"-webkit-transition": "all .3s","-moz-transition": "all .3s","-o-transition": "all .3s","transition": "all .3s"});
+//             $("#carousel" + nextSeq + " ul").css({"-webkit-transform": "translate3d(0%,0,0) scale3d(1,1,1)","-moz-transform": "translate3d(0%,0,0) scale3d(1,1,1)","-ms-transform": "translate3d(0%,0,0) scale3d(1,1,1)","-o-transform": "translate3d(0%,0,0) scale3d(1,1,1)"," transform": "translate3d(0%,0,0) scale3d(1,1,1)","overflow": "hidden","-webkit-backface-visibility": "hidden","-webkit-transform-style": "preserve-3d","-webkit-box-shadow": "0 0 20px rgba(0,0,0,.2)","box-shadow": "0 0 20px rgba(0,0,0,.2)","position": "relative"});            $("#carousel" + nextSeq + " ul").css({"overflow": "hidden","-webkit-backface-visibility": "hidden","-webkit-transform-style": "preserve-3d","-webkit-box-shadow": "0 0 20px rgba(0,0,0,.2)","box-shadow": "0 0 20px rgba(0,0,0,.2)","position": "relative"});
+//             $("#carousel" + nextSeq + " li").css({"float": "left","overflow": "hidden","-webkit-transform-style": "preserve-3d"});
+    
+    
+    
+    carousels[nextSeq].init();
+            console.log("next number " +nextSeq );
+            count++;
+        } 

@@ -95,9 +95,8 @@
 
                     case 'swipeleft':
                         self.next(); 
+                        getAnotherValue(element);
                         ev.gesture.stopDetect();
-                        // removeFromList($(this).index());
-                                //appendToList();
                         break;
 
                     case 'swiperight':
@@ -114,8 +113,10 @@
                                 getCLU((result.results[$(this).index()].value));
                             } else {
                                 self.next();
-                             //   removeFromList($(this).index());
-                              //  appendToList();
+//                               console.log($(">div", element));
+//                               console.log($(element));
+//                               console.log($("div", element));
+                                getAnotherValue(element);
                             }
                         }
                         else {
