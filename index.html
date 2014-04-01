@@ -50,13 +50,13 @@
             </div><!-- /panel -->
             <header data-role="header" id="mainPageHeader" data-theme="d">
                 <a href="#menuPanel" id="menuPanelButton"  data-iconpos="notext"></a>
-                <a id="mainLight"></a>
+                <a id="mainLight" onclick="randomPage();"></a>
                 <p>Clu</p>
                 
             </header>
 
             <div data-role="content" id="mainContent" align="center">
-                <h1 id="mainText"> Lets </h1>
+                <h1 id="mainText"> Let's </h1>
 <!--                 <p id="subTitle"> </p>-->
                 <p id="mainTitle">Get A CLU </p>
                 <form id="mainContentForm" > 
@@ -92,10 +92,10 @@
             <header data-role="header" id="resultPageHeader" data-theme="d">
                 <a href="#resultPanel" id="resultPanelButton" data-iconpos="notext"></a>
 <!--                <a href="" onclick="randomPage()" data-icon="star" data-iconpos="notext"></a>-->
-                <p id="resultTitle">CLU</p>
-                <a id="resultLight"></a>
+                <p id="resultTitle">Clu</p>
+                <a id="resultLight" onclick="randomPage();"></a>
                     <input type="search" id="resultSearch"  lang="en" name="name" onkeydown="if (event.keyCode === 13)
-                                getCLU(document.getElementById('name').value)" value="" placeholder="Search"/>               
+                                getCLU(document.getElementById('resultSearch').value)" value="" placeholder="Search"/>               
             </header>
 
             <div id="resultImages">

@@ -1,5 +1,6 @@
 html,body, .ui-link{
-     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    // font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+     font-family: 'Lato', sans-serif;
 }
 .ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a{
     color : grey;
@@ -14,22 +15,27 @@ html,body, .ui-link{
 }
 #mainContentForm{
     width: 75%;
-    border: solid 2px rgb(1,184,222);; 
+    border: solid 2px rgb(1,184,222);
+    font-family: 'Lato', sans-serif;
     /* height: 50%; */
 }
 #mainText{
     color: rgb(13,136,210);
-    font-weight: bold;
+    font-weight: bolder;
     font-size: 200%;
+    text-align: center;
 }
 #mainTitle{
     color: rgb(13,136,210);
-    font-weight: bold;
+   // font-weight: bold;
      font-size: 200%;
+     text-align: center;
 }
 #resultLight, #mainLight{
     background-image: url("lightBlue.png") !important;
     background-size: 100% 100%; 
+    width: 3%; 
+    height: 10%;
 }
 /*.ui-input-search:after{
 right : .3125em;
@@ -49,7 +55,7 @@ right : .3125em;
 }*/
 
 #CLUbutton,#speechToolMain,#mainSpeech {
-        font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+        font-family: 'Lato', sans-serif;
     background-color: #3399FF;
     text-align: center;
     font-size: 150%;
@@ -65,6 +71,7 @@ resultPageHeader > p{
 #resultTitle{
     font-size: 150%;
     text-align: center;
+    font-family: 'Lato', sans-serif;
 }
 #resultPageHeader{
     background-color: rgb(1,184,222);
@@ -76,13 +83,14 @@ resultPageHeader > p{
 .ui-input-search:after{
     /*   width:18px;
        height:18px;*/
-    left: 78%;
+    left: 88%;
+    position: absolute;
     opacity : 100;
     // right : .3125em;
     /*   margin-left: -50px;*/
 }
 .ui-input-search input{
-    padding-left: 5%;
+    padding-left: 1%;
 }
 #resultSearch{
     font-weight: bolder;
@@ -91,7 +99,7 @@ resultPageHeader > p{
 
 
 
-bosy {
+body {
 font-family: 'Lato', sans-serif;
 }
 
