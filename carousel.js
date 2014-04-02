@@ -101,7 +101,7 @@
 
                     case 'swiperight':
                         self.prev();
-                        getCLU((result.results[$(this).index()].value));
+                        getCLU((result.results[parseFromString(this.id)].value));
                         ev.gesture.stopDetect();
                         break;
 
@@ -110,12 +110,9 @@
                         if(Math.abs(ev.gesture.deltaX) > pane_width/2) {
                             if(ev.gesture.direction == 'right') {
                                 self.prev();
-                                getCLU((result.results[$(this).index()].value));
+                                getCLU((result.results[parseFromString(this.id)].value));
                             } else {
                                 self.next();
-//                               console.log($(">div", element));
-//                               console.log($(element));
-//                               console.log($("div", element));
                                 getAnotherValue(element);
                             }
                         }
@@ -124,7 +121,8 @@
                         }
                         break;
                     case 'tap':
-                        getContext($(this).index(),firstTap);
+                        //getContext($(this).index(),firstTap);
+                         getContext(parseFromString(this.id),firstTap);
                         break;
                 }
             }

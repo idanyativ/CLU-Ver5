@@ -75,7 +75,7 @@ function sendValueToServer(value) {
                 history[numberOfSearch] = value;
                 numberOfSearch++;
                 console.log(history);
-                buildPage2(resultsInString, image);
+                buildPage(resultsInString, image);
 
             }
         }
@@ -89,30 +89,30 @@ function sendValueToServer(value) {
  * @param {type} val
  * @returns {Array|Object}
  */
-function localSend(val) {
-    var resultAsJson = null;
-    //post to server and get result as json
-    switch (val) {
-        case "Retention" :
-            resultAsJson = '{"results":[{"value":"Buisness Term","context":"AAA"},{"value":"Marketing","context":"BBB"},{"value":"customer service","context":"CCC"},{"value":"Consumer Behavior","context":"Retention is a term in customer behavior which indicate the lifetime of the user with the product"}]}';
-            break;
-        case "Consumer Behavior" :
-            resultAsJson = '{"results":[{"value":"Consumer buying behavior","context":"AAA"},{"value":"Psychology, decision making","context":"BBB"},{"value":"Marketing service","context":"CCC"}]}';
-            break;
-        case "Neymar" :
-            resultAsJson = '{"results":[{"value":"Footballer","context":"is a Brazilian footballer"},{"value":"Barcelona","context":"plays for La Liga club FC Barcelona"},{"value":"Winger","context":"play as a forward or winger"},{"value":"Santos","context":"Neymar joined Santos in 2003"},{"value":"Ronaldinho","context":"Ronaldinho states he will be the best in the world"}]}';
-            break;
-        default :
-            resultAsJson = '{"results":[{"value":"Electrical engineering","context":"CCC"},{"value":"Thomas Edison","context":"BBB"},{"value":"Alternating current","context":"AAA"}]}';
-    }
-    console.log(resultAsJson);
-    if (resultAsJson !== null) {
-        var resultAsString = JSON.parse(resultAsJson);
-        return resultAsString;
-    } else {
-        alert("result it null!");
-    }
-}
+//function localSend(val) {
+//    var resultAsJson = null;
+//    //post to server and get result as json
+//    switch (val) {
+//        case "Retention" :
+//            resultAsJson = '{"results":[{"value":"Buisness Term","context":"AAA"},{"value":"Marketing","context":"BBB"},{"value":"customer service","context":"CCC"},{"value":"Consumer Behavior","context":"Retention is a term in customer behavior which indicate the lifetime of the user with the product"}]}';
+//            break;
+//        case "Consumer Behavior" :
+//            resultAsJson = '{"results":[{"value":"Consumer buying behavior","context":"AAA"},{"value":"Psychology, decision making","context":"BBB"},{"value":"Marketing service","context":"CCC"}]}';
+//            break;
+//        case "Neymar" :
+//            resultAsJson = '{"results":[{"value":"Footballer","context":"is a Brazilian footballer"},{"value":"Barcelona","context":"plays for La Liga club FC Barcelona"},{"value":"Winger","context":"play as a forward or winger"},{"value":"Santos","context":"Neymar joined Santos in 2003"},{"value":"Ronaldinho","context":"Ronaldinho states he will be the best in the world"}]}';
+//            break;
+//        default :
+//            resultAsJson = '{"results":[{"value":"Electrical engineering","context":"CCC"},{"value":"Thomas Edison","context":"BBB"},{"value":"Alternating current","context":"AAA"}]}';
+//    }
+//    console.log(resultAsJson);
+//    if (resultAsJson !== null) {
+//        var resultAsString = JSON.parse(resultAsJson);
+//        return resultAsString;
+//    } else {
+//        alert("result it null!");
+//    }
+//}
 
 /**
  * Open the input value in wikipedia
@@ -129,41 +129,11 @@ function getInputValue() {
 
 /**
  * 
- * @param {type} res
+ * @param {type} results
  * @param {type} image
  * @returns {undefined}
  */
-//function buildPage(results, image)
-//{
-//    $.mobile.changePage('#resultPage');
-//    $('#resultSearch').val(getInputValue());
-//    $('#resultImages').css({"background-image": "url" + "(" + image + ")", "background-repeat": "no-repeat", "background-size": "100% 100%"});
-//    showOnlyValue();
-//    $("#resultList").empty();
-////    setPicText();
-//    var incomeResults = results;
-//    resultsList = document.getElementById("resultList");
-//    if (incomeResults !== null)
-//    {
-//        // Building each reminders record in the page
-//        for (var i = 0; i < 3; i++) {
-//            $(resultsList).append("<li><a onclick=\"getContext(" + i +")\" data-iconshadow=\"false\"  data-icon=\"false\" id=\list" + i + ">" + incomeResults.results[i].value + "</a></li>");
-//            // console.log(resultsList);
-//            $("#list" + i).css({"height": "30px", "text-align": "center", "color": "grey", "background-color": "white", "padding-top": "25px", "font-family": "Geneva, Tahoma, Verdana, sans-serif", "text-overflow": "ellipsis"});
-//            count++;
-//        }
-//
-//    }
-//    $('#resultPage').html();
-//    $('#listcontainer').html(resultsList);
-//    //$('#listcontainer').trigger("create");//refreashing dynamically
-//    $('#resultPage a').on('click', function(e) {
-//        e.preventDefault();
-//    });
-//}
-//;
-
-function buildPage2(results, image)
+function buildPage(results, image)
 {   
     $.mobile.changePage('#resultPage');
     count = 0;
@@ -254,7 +224,6 @@ function randomPage() {
             getCLU("google");
             break;
     }
-
 }
 
 function startOver() {
@@ -268,17 +237,12 @@ function getAnotherValue(toRemove) {
 //    if (count == length-1) {
     if (count == 6) {
         if (removedItem == 5) {
-//            alert("asdasd");
             removeFromList(toRemove);
-//            alert("finish");
             addWikiElement();
         } else {
-//            alert("no more words");
-//            console.log("tooo: " + removedItem);
             removeFromList(toRemove);
         }
     } else {
-        // alert("id" + $(this));
         console.log("this" + $(this).value);
         removeFromList(toRemove);
         addElement(count);
@@ -318,4 +282,16 @@ function addWikiElement(){
 //    $(holder).append("<li id=\random"+" onClick=\"randomPage()\">"+"Get Random" + "</li>").css({"text-align":"center","background":"red"});
 //    $(holder).append("<li id=\wiki"+" onClick=\"gotowiki()\">"+"Go To Wiki" + "</li>").css({"text-align":"center","background":"blue"});
 //    $(holder).append("<li id=\startOver"+" onClick=\"startOver()\">"+"Start Over" + "</li").css({"text-align":"center","background":"pink"});
-//}   $(holder).append("</ul>");
+//}   $(holder).append("</ul>");.
+
+function parseFromString(value){
+    var parsedNumber;
+    console.log(value.length);
+    for (var i = 0; i < value.length; i++) { 
+            parsedNumber= Number(new String(value.charAt(i)));
+            console.log("pasre: " +parsedNumber + isNaN(parsedNumber));
+            if(!(isNaN(parsedNumber))){
+                return parsedNumber;
+            }
+        }
+}
