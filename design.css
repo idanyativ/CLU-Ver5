@@ -6,7 +6,7 @@ html,body, .ui-link{
     color : grey;
 }
 #mainPageHeader{
-    background-color: rgb(1,184,222);
+    background-color: rgb(11,191,179);
 }
 #mainPageHeader p{
     color: white;
@@ -14,22 +14,23 @@ html,body, .ui-link{
     font-size: 150%;
 }
 #mainContentForm{
-    width: 75%;
-    border: solid 2px rgb(1,184,222);
+    width: 90%;
+    border: solid 2px rgb(11,191,179);
     font-family: 'Lato', sans-serif;
+    margin-left: 5%;
     /* height: 50%; */
 }
 #mainText{
-    color: rgb(13,136,210);
+    color: rgb(11,191,179);
     font-weight: bolder;
     font-size: 200%;
-    text-align: center;
+     margin-left: 5%;
 }
 #mainTitle{
-    color: rgb(13,136,210);
-   // font-weight: bold;
-     font-size: 200%;
-     text-align: center;
+    color: rgb(11,191,179);
+    font-weight: bold;
+     margin-left: 5%;
+     font-size: 200%; 
 }
 #resultLight, #mainLight{
     background-image: url("lightBlue.png") !important;
@@ -83,7 +84,7 @@ resultPageHeader > p{
 .ui-input-search:after{
     /*   width:18px;
        height:18px;*/
-    left: 88%;
+    left: 95%;
     position: absolute;
     opacity : 100;
     // right : .3125em;
@@ -183,17 +184,13 @@ ul.nav-search li{
     font-size: 150%;
     color: white;
 }
-#loveButton{
-    text-align: center;
-    color: yellow;
-    font-size: 150%;
-    background-color: #3399FF;
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('http://code.jquery.com/mobile/1.4.0/images/ajax-loader.gif') 50% 50% no-repeat rgb(249,249,249);
 }
-/*#aboutUS,p{
-    text-align: center;
-    font-size: 150%;
-    color: #3399FF;
-}*/
-
-
 

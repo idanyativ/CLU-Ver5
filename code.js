@@ -2,6 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 var result;
 var threeResults = null;
 var count = 0;
@@ -14,6 +15,13 @@ var history;
 var firstTap = true;
 var removedItem = 0;
 var numberOfSearch = 0;
+
+$(document).ready(function() {
+	$(".loader").fadeOut("slow");
+});
+$('#resultPage').load(function() {
+	$(".loader").fadeOut("slow");
+});
 /**
  * 
  * @param inputValue - Get the value from the user
@@ -33,7 +41,7 @@ function getCLU(inputValue) {
         }
         // send value to server
         sendValueToServer(value);
-
+        build();
 
         // use to test locally 
         /**
@@ -45,20 +53,12 @@ function getCLU(inputValue) {
 
     }
 }
-
-
-/**
- * 
- * @param  value - get the input value and send it to server
- * @returns {Boolean}
- */
 function sendValueToServer(value) {
     console.log("Get Clue About " + value);
-    // e.preventDefault();
     $.ajax({
         type: "GET",
-        url: 'http://noanimrodidan.milab.idc.ac.il/?q=' + value,
-        success: function(response) {
+        url: 'http://noanimrodidan.milab.idc.ac.il/?q=' + value})
+            .done(function(response){
             console.log(response);
             var incomeResults = JSON.parse(response);
             result = JSON.parse(response);
@@ -66,7 +66,7 @@ function sendValueToServer(value) {
             if (incomeResults === null) {
                 console.log("no results");
             } else {
-
+                
                 // if not null - build the page 
                 length = incomeResults.results.length;
                 resultsInString = JSON.parse(JSON.stringify(incomeResults));
@@ -75,43 +75,54 @@ function sendValueToServer(value) {
                 history[numberOfSearch] = value;
                 numberOfSearch++;
                 console.log(history);
-                buildPage(resultsInString, image);
-
-            }
-        }
-    });
-
+                    }
     return false;
+});
+}
+
+function build(){
+    $(document).ajaxStop(function(){
+      buildPage(resultsInString, image);
+      });
+  // $.when(sendValueToServer).done(buildPage(resultsInString, image));
 }
 
 /**
- * Local Testing
- * @param {type} val
- * @returns {Array|Object}
+ * 
+ * @param  value - get the input value and send it to server
+ * @returns {Boolean}
  */
-//function localSend(val) {
-//    var resultAsJson = null;
-//    //post to server and get result as json
-//    switch (val) {
-//        case "Retention" :
-//            resultAsJson = '{"results":[{"value":"Buisness Term","context":"AAA"},{"value":"Marketing","context":"BBB"},{"value":"customer service","context":"CCC"},{"value":"Consumer Behavior","context":"Retention is a term in customer behavior which indicate the lifetime of the user with the product"}]}';
-//            break;
-//        case "Consumer Behavior" :
-//            resultAsJson = '{"results":[{"value":"Consumer buying behavior","context":"AAA"},{"value":"Psychology, decision making","context":"BBB"},{"value":"Marketing service","context":"CCC"}]}';
-//            break;
-//        case "Neymar" :
-//            resultAsJson = '{"results":[{"value":"Footballer","context":"is a Brazilian footballer"},{"value":"Barcelona","context":"plays for La Liga club FC Barcelona"},{"value":"Winger","context":"play as a forward or winger"},{"value":"Santos","context":"Neymar joined Santos in 2003"},{"value":"Ronaldinho","context":"Ronaldinho states he will be the best in the world"}]}';
-//            break;
-//        default :
-//            resultAsJson = '{"results":[{"value":"Electrical engineering","context":"CCC"},{"value":"Thomas Edison","context":"BBB"},{"value":"Alternating current","context":"AAA"}]}';
-//    }
-//    console.log(resultAsJson);
-//    if (resultAsJson !== null) {
-//        var resultAsString = JSON.parse(resultAsJson);
-//        return resultAsString;
-//    } else {
-//        alert("result it null!");
-//    }
+//function sendValueToServer(value) {
+//    console.log("Get Clue About " + value);
+//    $.ajax({
+//        type: "GET",
+//        url: 'http://noanimrodidan.milab.idc.ac.il/?q=' + value,
+//        success: function(response,function(callback)) {    
+//            console.log(response);
+//            var incomeResults = JSON.parse(response);
+//            result = JSON.parse(response);
+//            // valid that the results isn't null
+//            if (incomeResults === null) {
+//                console.log("no results");
+//            } else {
+//                
+//                // if not null - build the page 
+//                length = incomeResults.results.length;
+//                resultsInString = JSON.parse(JSON.stringify(incomeResults));
+//                threeResults = cutResults(resultsInString);
+//                image = incomeResults.imageURL;
+//                history[numberOfSearch] = value;
+//                numberOfSearch++;
+//                console.log(history); 
+//            }
+//        },function(){
+//            
+//        }
+//        complete:function() {
+//            buildPage(resultsInString, image);
+//        }
+//    });
+//    return false;
 //}
 
 /**
@@ -136,6 +147,7 @@ function getInputValue() {
 function buildPage(results, image)
 {   
     $.mobile.changePage('#resultPage');
+    $("#resultContent").empty();
     count = 0;
     numberOfSearch = 0;
     removedItem = 0;
@@ -143,7 +155,7 @@ function buildPage(results, image)
     $('#resultImages').css({"background-image": "url" + "(" + image + ")", "background-repeat": "no-repeat", "background-size": "100% 100%"});
     showOnlyValue();
 
-    $("#resultContent").empty();
+   // $("#resultContent").empty();
 //    setPicText();
     var incomeResults = results;
     if (incomeResults !== null)
@@ -154,13 +166,12 @@ function buildPage(results, image)
         }
         console.log("count" + count);
     }
-    $('#resultPage').html();
+     $('#resultPage').html();
     $('#resultPage').trigger("create");//refreashing dynamically
     $('#resultPage a').on('click', function(e) {
         e.preventDefault();
     });
-}
-;
+};
 
 function getContext(i) {
     if (firstTap) {
@@ -208,25 +219,56 @@ function removeFromList(el) {
 }
 
 function randomPage() {
-    var randomvalue = Math.floor((Math.random() * 4) + 1);
-    console.log(randomvalue);
-    switch (randomvalue) {
-        case 1:
-            getCLU("einstein");
-            break;
-        case 2:
-            getCLU("cola");
-            break;
-        case 3:
-            getCLU("rihanna");
-            break;
-        case 4:
-            getCLU("google");
-            break;
-    }
+    var holder = document.getElementById("resultContent");
+  $(holder).css({"text-align":"center","background":"white","margin-top":"0%","width":"100%","margin-left":"0%","font-size":"130%"});
+
+//    var randomvalue = Math.floor((Math.random() * 4) + 1);
+//    console.log(randomvalue);
+//    switch (randomvalue) {
+//        case 1:
+//            getCLU("einstein");
+//            break;
+//        case 2:
+//            getCLU("cola");
+//            break;
+//        case 3:
+//            getCLU("rihanna");
+//            break;
+//        case 4:
+//            getCLU("google");
+//            break;
+//    }
+console.log("Get Random Clue ");
+    $.ajax({
+        type: "GET",
+        url: 'http://noanimrodidan.milab.idc.ac.il/?q=randomValue'})
+            .done(function(response){
+            console.log(response);
+            var incomeResults = JSON.parse(response);
+            result = JSON.parse(response);
+            // valid that the results isn't null
+            if (incomeResults === null) {
+                console.log("no results");
+            } else {
+                
+                // if not null - build the page 
+                length = incomeResults.results.length;
+                resultsInString = JSON.parse(JSON.stringify(incomeResults));
+                threeResults = cutResults(resultsInString);
+                image = incomeResults.imageURL;
+                history[numberOfSearch] = value;
+                numberOfSearch++;
+                console.log(history);
+                build();
+                    }
+    return false;
+});
 }
 
 function startOver() {
+    var holder = document.getElementById("resultContent");
+        $(holder).css({"text-align":"center","background":"white","margin-top":"0%","width":"100%","margin-left":"0%","font-size":"130%"});
+
     index = 0;
     count = 0;
     getCLU(getInputValue());
@@ -253,7 +295,9 @@ function addElement(nextSeq) {
     var holder = document.getElementById("resultContent");
     $(holder).append("<div id=\carousel" + nextSeq + ">" + "</div>");
     var resultsList = document.getElementById("carousel" + nextSeq);
+     $(resultsList).css({"width":"100%"});
     $(resultsList).append("<ul id=\listBricks" + nextSeq + ">");
+    $("#listBricks" + nextSeq).css({"width":"relative"});
     $("#listBricks" + nextSeq).css({"height": "50px", "text-align": "center", "border": "solid 1px black"});
     var resultsList2 = document.getElementById("listBricks" + nextSeq);
     $(resultsList2).append("<li id=\"pane1\">Get New CLU</li>");
@@ -273,10 +317,12 @@ function addWikiElement(){
     $('#lineup').html("<b>" + "Need Another Clu?!" + "</b>").css({"font-size": "200%","text-align":"center","line-height":"5"});
     $('#lineup').css({top: '0%'});
     $('#lineup').animate({height: '100%'});
-//    $('#lineup').attr("onClick", "showOnlyValue()");
     var holder = document.getElementById("resultContent");
     $(holder).append("<div onClick=\"randomPage()\">" + "Get Random Clu"  + "</div>");
     $(holder).css({"text-align":"center","background":"red","margin-top":"5%","width":"70%","margin-left":"15%","font-size":"130%"});
+    $(holder).append("<div onClick=\"startOver()\">" + "Start Over"  + "</div>");
+    //$(holder).css({"text-align":"center","background":"red","margin-top":"5%","width":"70%","margin-left":"15%","font-size":"130%"});
+
     }
 //     $(holder).append("<ul data-role=\"listview\"");
 //    $(holder).append("<li id=\random"+" onClick=\"randomPage()\">"+"Get Random" + "</li>").css({"text-align":"center","background":"red"});

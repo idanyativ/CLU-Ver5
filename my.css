@@ -10,7 +10,7 @@
              background: blue; 
             overflow: hidden;
             background: white;
-            width: 100%;
+             width: 100%; 
              height: 100%; 
             -webkit-backface-visibility: hidden;
             -webkit-transform: translate3d(0,0,0) scale3d(1,1,1);
@@ -39,6 +39,7 @@
             -webkit-box-shadow: 0 0 20px rgba(0,0,0,.2);
             box-shadow: 0 0 20px rgba(0,0,0,.2);
             position: relative;
+            width: 100%; 
         }
 
         #carousel0 li,#carousel1 li,#carousel2 li,#carousel3 li ,#carousel4 li, #carousel5 li, #carousel6 li {
