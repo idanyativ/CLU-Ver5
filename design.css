@@ -1,6 +1,7 @@
 html,body, .ui-link{
     // font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-     font-family: 'Lato', sans-serif;
+     
+    /* font-family: 'Lato', sans-serif; */
 }
 .ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a{
     color : grey;
@@ -101,7 +102,7 @@ resultPageHeader > p{
 
 
 body {
-font-family: 'Lato', sans-serif;
+/* font-family: 'Lato', sans-serif; */
 }
 
 #aboutPageHeader{
@@ -121,6 +122,9 @@ ul.nav-search li{
     padding: 0em;
 }
 
+.ui-content {
+padding: 0;
+};
 
 #resultSpeechTool{
     border: none;

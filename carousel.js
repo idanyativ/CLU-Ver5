@@ -17,7 +17,6 @@
              */
             this.init = function() {
                 setPaneDimensions();
-                 console.log("AAAAAAAAAAAAAAAA" +screen.width);
                 $(window).on("load resize orientationchange orientation init" , function() {
                     setPaneDimensions();
                 });
@@ -28,26 +27,19 @@
             /**
              * set the pane dimensions and scale the container
              */
-            function setPaneDimensions() {
+ function setPaneDimensions() {
                 element.width = screen.width;
-                pane_width = element.width;
-                console.log(element);
+                pane_width = screen.width;
+                //console.log(element);
                 panes.each(function() {
-                    $(this).width(screen.width);
+                   // $(this).width(screen.width-20);
+                                      //
+                                       $(this).width(pane_width);
+
                 });
-                console.log(pane_width);
                 container.width(pane_width*pane_count);
                 self.showPane(1, true);
             };
-            
-             function setmyPaneDimensions() {
-                 panes.each(function() {
-                    $(this).width(screen.width);
-                });
-                                                console.log("AAAAAAAAAAAAAAAA" +screen.width);
-
-            };
-
 
             /**
              * show pane by index
@@ -56,7 +48,6 @@
                 // between the bounds
                 index = Math.max(0, Math.min(index, pane_count-1));
                 current_pane = index;
-
                 var offset = -((100/pane_count)*current_pane);
                 setContainerOffset(offset, animate);
             };
