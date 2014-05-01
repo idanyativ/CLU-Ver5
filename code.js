@@ -15,12 +15,14 @@ var history;
 var firstTap = true;
 var removedItem = 0;
 var numberOfSearch = 0;
-
-$(document).ready(function() {
-	$(".loader").fadeOut("slow");
-});
-$('#resultPage').load(function() {
-	$(".loader").fadeOut("slow");
+                                
+$(document).on('keydown', '#mainSearch',function(noa) {
+//    console.log(e);
+    if (noa.keyCode === 13){
+        getCLU($(this).val());
+        $(".loader").fadeIn("slow"); 
+    }
+    
 });
 /**
  * 
@@ -41,6 +43,7 @@ function getCLU(inputValue) {
         }
         // send value to server
         sendValueToServer(value);
+       // alert("idan");
         build();
 
         // use to test locally 
@@ -60,6 +63,7 @@ function sendValueToServer(value) {
         url: 'http://noanimrodidan.milab.idc.ac.il/?q=' + value})
             .done(function(response){
             console.log(response);
+            $(".loader").fadeOut("slow"); 
             var incomeResults = JSON.parse(response);
             result = JSON.parse(response);
             // valid that the results isn't null
@@ -298,7 +302,7 @@ function addElement(nextSeq) {
      $(resultsList).css({"width":"100%"});
     $(resultsList).append("<ul id=\listBricks" + nextSeq + ">");
     $("#listBricks" + nextSeq).css({"width":"relative"});
-    $("#listBricks" + nextSeq).css({"height": "50px", "text-align": "center", "border": "solid 1px black"});
+    $("#listBricks" + nextSeq).css({"height": "80px", "text-align": "center", "border": "solid 1px black"});
     var resultsList2 = document.getElementById("listBricks" + nextSeq);
     $(resultsList2).append("<li id=\"pane1\">Get New CLU</li>");
     $("#listBricks" + nextSeq + " > " + "#pane1").css({"background": "rgb(72,182,233)", "background-position": "right", "background-image": "url(searchListItem.png)", "background-repeat": "no-repeat", "background-size": " 20% 100%", "height": "100%", "font-weight": "bold", "font-style": "italic", "font-size": "150%"});

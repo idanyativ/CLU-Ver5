@@ -28,13 +28,13 @@
              * set the pane dimensions and scale the container
              */
  function setPaneDimensions() {
-                element.width = screen.width;
-                pane_width = screen.width;
+            //    element.width = screen.width;
+                pane_width = element.width();
                 //console.log(element);
                 panes.each(function() {
                    // $(this).width(screen.width-20);
                                       //
-                                       $(this).width(pane_width);
+                $(this).width(pane_width);
 
                 });
                 container.width(pane_width*pane_count);
@@ -106,6 +106,7 @@
                     case 'swiperight':
                         self.prev();
                         getCLU((result.results[parseFromString(this.id)].value));
+                        $(".loader").fadeIn("slow"); 
                         ev.gesture.stopDetect();
                         break;
 

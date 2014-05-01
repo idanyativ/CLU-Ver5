@@ -14,7 +14,7 @@
 
 
         <!-- CSS -->
-        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
         <link rel="stylesheet" type="text/css" href="design.css" />
         <link rel="stylesheet" type="text/css" href="my.css" />
@@ -40,26 +40,22 @@
 
                 <!-- panel content goes here -->
             </div><!-- /panel -->
-            <header data-role="header" id="mainPageHeader" data-theme="d">
-                <a href="#menuPanel" id="menuPanelButton"  data-iconpos="notext"></a>
+            <header data-role="header" id="mainPageHeader" >
+                <a href="#menuPanel" id="menuPanelButton" ></a>
                 <a id="mainLight" onclick="randomPage();"></a>
                 <p>Clu</p>
                 
             </header>
 
             <div data-role="content" id="mainContent">
-                <h1 id="mainText"> Let's </h1>
-<!--                 <p id="subTitle"> </p>-->
-                <p id="mainTitle">Get A CLU </p>
-                <form id="mainContentForm" > 
-
-                    <input type="search" id="mainSearch" placeholder="About..." value="" lang="en" onkeydown="if (event.keyCode === 13)
-                                getCLU(document.getElementById('mainSearch').value)"  autocomplete="on">
-                    <!--                    <div id="CLUbutton">
-                                            <a href="" id="CLUbuttonMain" onclick="getCLU(document.getElementById('mainSpeech').value)"><span> GET A CLUE</span> </a>   
-                                        </div>-->
-
-                </form>
+                <p id="mainText"> Let's </p>
+                <p id="mainTitle">Get a clue </p>
+              <!--  <form id="mainContentForm" >  -->
+              <div data-role="fieldcontain" id="mainContentForm">
+    <input type="search" id="mainSearch" value="" placeholder="About..."/>
+</div>  
+                   <!-- <input type="text" id="mainSearch" placeholder="About..." value="" lang="en"  autocomplete="on">-->
+              <!--  </form>-->
             </div>
         </div>
 
