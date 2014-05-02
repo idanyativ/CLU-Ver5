@@ -302,7 +302,7 @@ function addElement(nextSeq) {
      $(resultsList).css({"width":"100%"});
     $(resultsList).append("<ul id=\listBricks" + nextSeq + ">");
     $("#listBricks" + nextSeq).css({"width":"relative"});
-    $("#listBricks" + nextSeq).css({"height": "80px", "text-align": "center", "border": "solid 1px black"});
+    $("#listBricks" + nextSeq).css({"height": "72px", "text-align": "center", "border": "solid 1px black"});
     var resultsList2 = document.getElementById("listBricks" + nextSeq);
     $(resultsList2).append("<li id=\"pane1\">Get New CLU</li>");
     $("#listBricks" + nextSeq + " > " + "#pane1").css({"background": "rgb(72,182,233)", "background-position": "right", "background-image": "url(searchListItem.png)", "background-repeat": "no-repeat", "background-size": " 20% 100%", "height": "100%", "font-weight": "bold", "font-style": "italic", "font-size": "150%"});
