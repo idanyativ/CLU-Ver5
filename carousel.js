@@ -28,7 +28,8 @@
              * set the pane dimensions and scale the container
              */
    function setPaneDimensions() {
-                pane_width = screen.width;
+              //  pane_width = screen.width;
+                pane_width = window.innerWidth;
                 panes.each(function() {
                 $(this).width(pane_width);
                 });
