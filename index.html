@@ -3,9 +3,7 @@
     <head>
         <title>CLU - Less Is More </title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!-- <meta name="viewport" content="initial-scale=1.0,user-scalable=yes,maximum-scale=1,width=device-width" />
-         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">-->
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <meta name="viewport" content="width=device-width,height=device-height , initial-scale=1" > 
         <!-- JS -->
         <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
@@ -27,11 +25,14 @@
             <div data-role="panel" data-position="left" data-position-fixed="false" data-display="overlay" id="menuPanel">
 
                 <ul data-role="listview"  class="nav-search" id="mPanel">
+                    <li id="mpClose" data-icon="delete" data-filtertext="wai-aria voiceover accessibility screen reader">
+                        <a href="" data-rel="close" >Close</a>
+                    </li>
                     <li data-icon="myapp-home" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a href="#mainPage">Home</a>
                     </li>
                     <li data-icon="myapp-light" data-filtertext="wai-aria voiceover accessibility screen reader">
-                        <a id="randomPageMain" onclick="randomPage();">Random Clu</a>
+                        <a id="randomPageMain" onclick="randomPage();">Random Clue</a>
                     </li>
                     <li data-icon="myapp-about" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a href="#aboutPage">About</a>
@@ -47,29 +48,26 @@
 
             <div data-role="content" id="mainContent">
                 <p id="mainText"> Let's <br><span>Get a clue</span></p>
-                <!--                <p id="mainText"> Let's </p>
-                                <p id="mainTitle">Get a clue </p>-->
-                <!--  <form id="mainContentForm" >  -->
-                <!-- <div data-role="fieldcontain" id="mainContentForm">-->
+                 <div data-role="fieldcontain" id="mainContentForm">
                 <input type="search" id="mainSearch" value="" placeholder="About..."/>
-                <!--</div> --> 
-                <!-- <input type="text" id="mainSearch" placeholder="About..." value="" lang="en"  autocomplete="on">-->
-                <!--  </form>-->
+                </div>  
             </div>
         </div>
 
         <!-- Result Page -->
         <div id="resultPage" data-role="page" data-position="fixed" class="ui-responsive-panel">
             <div data-role="panel" data-position="left" data-position-fixed="true" data-display="overlay" id="resultPanel">
-
                 <ul data-role="listview"  class="nav-search" id="rPanel">
-                    <li data-icon="myapp-home" data-filtertext="wai-aria voiceover accessibility screen reader">
+                     <li id="rpClose" data-icon="delete" data-filtertext="wai-aria voiceover accessibility screen reader">
+                        <a href="" data-rel="close" >Close</a>
+                    </li>
+                    <li id="rpHome" data-icon="myapp-home" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a href="#mainPage">Home</a>
                     </li>
-                    <li data-icon="myapp-light" data-filtertext="wai-aria voiceover accessibility screen reader">
+                    <li  id="rpRandom" data-icon="myapp-light" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a id="randomPageResult" onclick="randomPage();">Random Clu</a>
                     </li>
-                    <li data-icon="myapp-about" data-filtertext="wai-aria voiceover accessibility screen reader">
+                    <li id="rpAbout" data-icon="myapp-about" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a href="#aboutPage">About</a>
                     </li>
                 </ul>
@@ -78,30 +76,31 @@
             </div><!-- /panel -->
             <header data-role="header" id="resultPageHeader" data-theme="d">
                 <a href="#resultPanel" id="resultPanelButton" data-iconpos="notext"></a>
-                <!--                <a href="" onclick="randomPage()" data-icon="star" data-iconpos="notext"></a>-->
                 <p id="resultTitle">Clu</p>
                 <a id="resultLight" onclick="randomPage();"></a>
                 <input type="search" id="resultSearch"  lang="en" name="name" onkeydown="if (event.keyCode === 13)
                                 getCLU(document.getElementById('resultSearch').value)" value="" placeholder="Search"/>               
             </header>
 
-            <div id="resultImages">
+          
+
+<!--            <div data-role="content" id="resultContent"> -->
+                <div id="resultImages">
                 <div id="lineup">
                 </div>
             </div>
-
-            <div data-role="content" id="resultContent"> 
-
                 <div id="resultContentForm">    
                 </div>
-            </div>
+<!--            </div>-->
         </div>
 
-        About 
-        <div id="aboutPage" data-role="page" data-position="fixed">
-            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="aboutPanelButton" data-theme="d">
-
+        <!-- About --> 
+        <div id="aboutPage" data-role="page" data-position="fixed" class="ui-responsive-panel">
+            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="overlay" id="aboutPanel">
                 <ul data-role="listview"  class="nav-search" id="aPanel">
+                    <li id="apClose" data-icon="delete" data-filtertext="wai-aria voiceover accessibility screen reader">
+                        <a href="" data-rel="close" >Close</a>
+                    </li>
                     <li data-icon="myapp-home" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a href="#mainPage">Home</a>
                     </li>
@@ -113,26 +112,21 @@
                     </li>
                 </ul>
 
-                panel content goes here 
-            </div> /panel 
-            <header data-role="header" id="aboutPageHeader" data-theme="d">
-                <a href="#aboutPanelButton" data-iconpos="notext"></a>
-                <h1 id="aboutTitle"> ABOUT US</h1>
+            </div> 
+        <header data-role="header" id="aboutPageHeader" data-theme="d">
+                <a href="#aboutPanel" id="aboutPanelButton" data-iconpos="notext"></a>
+                <p id="aboutTitle">About</p>
+                <a id="aboutLight" onclick="randomPage();"></a>              
             </header>
-            <div data-role="content" id="aboutContent" align="center">
-                <form id="aboutContentForm">
-                    <div id="listcontainerAbout" align="center">
-                        <ul data-role="listview" id="aboutList" data-icon="false" >
-                            <li id='aboutUS'> <p> CLU IS AN APP CREATED 
-                                    <br>
-                                    BY STUDENTS AT IDC IN HERZELYA <br>
-                                    AS PART OF THE MILAB STUDIO</p></li>
-                            <li id='loveButton'> WON'T YOU SHOW US<br> SOME LOVE?</li>
-                            <li><a id='rateButton' onclick="rateUs()"> RATE US <br> WE REALLY APPRECITE IT </a></li>
-                            <li><a id='friendButton' onclick="tellFriend()"> TELL A FRIEND <br> DON'T KEEP THEM STUPID</a> </li>
-                        </ul>
-                    </div>
-                </form>
+            <div data-role="content" id="aboutContent">
+                <div id="aboutContentForm">
+                    <p id="aboutText"> Get a CLU.<br><span>Don't be stupid.</span></p>
+                    <p id="aboutFullText">Clu is a simple, quick and enjoyable way to learn new things.<br>
+
+clu is "Made for humans"- adjusted to the human eye and based on associative learning principles.<br>
+Instead of dispensing with an enormous text amounts, or hundreds of search results, clu gives you an esthetic and simple demonstration about the term you were counting for.</p>
+                    <a id="readMoreButton" onclick="readMore();">Read More></a>
+            </div>
             </div>
         </div>
         <script src="carousel.js"></script>

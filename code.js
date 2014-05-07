@@ -15,27 +15,36 @@ var history;
 var firstTap = true;
 var removedItem = 0;
 var numberOfSearch = 0;
-                                
-$(document).on('keydown', '#mainSearch',function(noa) {
-//    console.log(e);
-    if (noa.keyCode === 13){
-        getCLU($(this).val());
-        $(".loader").fadeIn("slow"); 
-    }
-    
-});
-$('#resultPage').on('location.reload()' ,function() {
-    getCLU(getInputValue());
-});
+var firstTime = true;
 
-
-$(document).on('keydown', '#resultSearch',function(noa) {
+$(document).on('keydown', '#mainSearch', function(noa) {
 //    console.log(e);
-    if (noa.keyCode === 13){
+    if (noa.keyCode === 13) {
         getCLU($(this).val());
-        $(".loader").fadeIn("slow"); 
+        $(".loader").fadeIn("slow");
     }
-    
+
+});
+//window.onbeforeunload = function(e) {
+//  alert( 'Dialog text here.');
+//};
+//$('#resultPage').bind('click', function(event) {
+// if(event.target.href) $(window).unbind('beforeunload');
+//});
+//$('#resultPage').bind('beforeunload', function(event) {
+// getCLU(getInputValue());
+//});
+//$('#resultPage').on('beforeunload' ,function() {
+//    getCLU(getInputValue());
+//});
+
+$(document).on('keydown', '#resultSearch', function(noa) {
+//    console.log(e);
+    if (noa.keyCode === 13) {
+        getCLU($(this).val());
+        $(".loader").fadeIn("slow");
+    }
+
 });
 /**
  * 
@@ -45,7 +54,7 @@ $(document).on('keydown', '#resultSearch',function(noa) {
 function getCLU(inputValue) {
     value = inputValue;
     console.log("getCLu : " + value);
-
+    console.log(screen.height);
     // valid that value isn't null
     if (value === "") {
         console.log("value cant be null");
@@ -56,7 +65,7 @@ function getCLU(inputValue) {
         }
         // send value to server
         sendValueToServer(value);
-       // alert("idan");
+        // alert("idan");
         build();
 
         // use to test locally 
@@ -74,34 +83,34 @@ function sendValueToServer(value) {
     $.ajax({
         type: "GET",
         url: 'http://noanimrodidan.milab.idc.ac.il/index.php?q=' + value})
-            .done(function(response){
-            console.log(response);
-            $(".loader").fadeOut("slow"); 
-            var incomeResults = JSON.parse(response);
-            result = JSON.parse(response);
-            // valid that the results isn't null
-            if (incomeResults === null) {
-                console.log("no results");
-            } else {
-                
-                // if not null - build the page 
-                length = incomeResults.results.length;
-                resultsInString = JSON.parse(JSON.stringify(incomeResults));
-                threeResults = cutResults(resultsInString);
-                image = incomeResults.imageURL;
-                history[numberOfSearch] = value;
-                numberOfSearch++;
-                console.log(history);
-                    }
-    return false;
-});
+            .done(function(response) {
+                console.log(response);
+                $(".loader").fadeOut("slow");
+                var incomeResults = JSON.parse(response);
+                result = JSON.parse(response);
+                // valid that the results isn't null
+                if (incomeResults === null) {
+                    console.log("no results");
+                } else {
+
+                    // if not null - build the page 
+                    length = incomeResults.results.length;
+                    resultsInString = JSON.parse(JSON.stringify(incomeResults));
+                    threeResults = cutResults(resultsInString);
+                    image = incomeResults.imageURL;
+                    history[numberOfSearch] = value;
+                    numberOfSearch++;
+                    console.log(history);
+                }
+                return false;
+            });
 }
 
-function build(){
-    $(document).ajaxStop(function(){
-      buildPage(resultsInString, image);
-      });
-  // $.when(sendValueToServer).done(buildPage(resultsInString, image));
+function build() {
+    $(document).ajaxStop(function() {
+        buildPage(resultsInString, image);
+    });
+    // $.when(sendValueToServer).done(buildPage(resultsInString, image));
 }
 
 /**
@@ -152,6 +161,7 @@ function goToWiki() {
 }
 
 function getInputValue() {
+    //console.log(result.results.searchValue);
     return value;
 }
 
@@ -162,37 +172,34 @@ function getInputValue() {
  * @returns {undefined}
  */
 function buildPage(results, image)
-{   
+{
     $.mobile.changePage('#resultPage');
-    $("#resultContent").empty();
+    $("#resultContentForm").empty();
     count = 0;
     numberOfSearch = 0;
     removedItem = 0;
     $('#resultSearch').val(getInputValue());
     $('#resultImages').css({"background-image": "url" + "(" + image + ")", "background-repeat": "no-repeat", "background-size": "100% 100%"});
     showOnlyValue();
-
-   // $("#resultContent").empty();
-//    setPicText();
     var incomeResults = results;
     if (incomeResults !== null)
     {
-//        var holder = document.getElementById("resultContent");
         for (var i = 0; i < 3; i++) {
             addElement(i);
         }
         console.log("count" + count);
     }
-     $('#resultPage').html();
+    $('#resultPage').html();
     $('#resultPage').trigger("create");//refreashing dynamically
     $('#resultPage a').on('click', function(e) {
         e.preventDefault();
     });
-};
+}
+;
 
 function getContext(i) {
     if (firstTap) {
-        $('#lineup').html("<b>" + setUpper(result.results[i].value) + "</b><br>" + result.results[i].context).css({"font-family": "'Lato' sans-serif","font-size": "100%"});
+        $('#lineup').html("<b>" + setUpper(result.results[i].value) + "</b><br>" + result.results[i].context).css({"font-family": "'Lato' sans-serif", "font-size": "100%"});
         $('#lineup').css({top: '60%'});
         $('#lineup').animate({height: '40%'});
         $('#lineup').attr("onClick", "showOnlyValue()");
@@ -210,11 +217,12 @@ function showOnlyValue() {
         "font-size": "2em",
         "background-color": "black",
         "opacity": "0.8",
-        "height": "15%",
+        "height": "20%",
         "width": "100%",
         "bottom": "0px",
         "position": "relative",
-        "top": "85%"
+        "top": "80%",
+        "text-align":"left"
     });
     $('#lineup').text(setUpper(getInputValue()));
     var action = "onclick()";
@@ -236,56 +244,43 @@ function removeFromList(el) {
 }
 
 function randomPage() {
-    var holder = document.getElementById("resultContent");
-  $(holder).css({"text-align":"center","background":"white","margin-top":"0%","width":"100%","margin-left":"0%","font-size":"130%"});
-
-//    var randomvalue = Math.floor((Math.random() * 4) + 1);
-//    console.log(randomvalue);
-//    switch (randomvalue) {
-//        case 1:
-//            getCLU("einstein");
-//            break;
-//        case 2:
-//            getCLU("cola");
-//            break;
-//        case 3:
-//            getCLU("rihanna");
-//            break;
-//        case 4:
-//            getCLU("google");
-//            break;
-//    }
-console.log("Get Random Clue ");
+    $(".loader").fadeIn("slow"); 
+    var holder = document.getElementById("resultContentForm");
+    console.log("Get Random Clue");
+    value = "randomValue";
     $.ajax({
         type: "GET",
-        url: 'http://noanimrodidan.milab.idc.ac.il/?q=randomValue'})
-            .done(function(response){
-            console.log(response);
-            var incomeResults = JSON.parse(response);
-            result = JSON.parse(response);
-            // valid that the results isn't null
-            if (incomeResults === null) {
-                console.log("no results");
-            } else {
-                
-                // if not null - build the page 
-                length = incomeResults.results.length;
-                resultsInString = JSON.parse(JSON.stringify(incomeResults));
-                threeResults = cutResults(resultsInString);
-                image = incomeResults.imageURL;
-                history[numberOfSearch] = value;
-                numberOfSearch++;
-                console.log(history);
-                build();
-                    }
-    return false;
-});
+        url: 'http://noanimrodidan.milab.idc.ac.il/index.php?q=' + value})
+            .done(function(response) {
+                console.log(response);
+        $(".loader").fadeOut("slow");
+                var incomeResults = JSON.parse(response);
+                result = JSON.parse(response);
+                // valid that the results isn't null
+                if (incomeResults === null) {
+                    console.log("no results");
+                } else {
+
+                    // if not null - build the page 
+                    length = incomeResults.results.length;
+                    resultsInString = JSON.parse(JSON.stringify(incomeResults));
+                    threeResults = cutResults(resultsInString);
+                    image = incomeResults.imageURL;
+                    value = incomeResults.searchValue;
+                    //value.replace(" ", "_");
+                    history[numberOfSearch] = value;
+                    numberOfSearch++;
+                    console.log(history);
+                    build();
+                }
+                return false;
+            });
 }
 
 function startOver() {
-    var holder = document.getElementById("resultContent");
-        $(holder).css({"text-align":"center","background":"white","margin-top":"0%","width":"100%","margin-left":"0%","font-size":"130%"});
-
+    $(".loader").fadeIn("slow"); 
+    var holder = document.getElementById("resultContentForm");
+    $(holder).css({"text-align": "center", "background": "white", "margin-top": "0%", "width": "100%", "margin-left": "0%", "font-size": "100%"});
     index = 0;
     count = 0;
     getCLU(getInputValue());
@@ -309,58 +304,65 @@ function getAnotherValue(toRemove) {
 }
 
 function addElement(nextSeq) {
-    var holder = document.getElementById("resultContent");
+    var holder = document.getElementById("resultContentForm");
     $(holder).append("<div id=\carousel" + nextSeq + ">" + "</div>");
     var resultsList = document.getElementById("carousel" + nextSeq);
-     $(resultsList).css({"width":"100%"});
+    $(resultsList).css({"width": "100%","height": "33.3%"});
     $(resultsList).append("<ul id=\listBricks" + nextSeq + ">");
-    $("#listBricks" + nextSeq).css({"width":"relative"});
-    $("#listBricks" + nextSeq).css({"height": "4em", "text-align": "center", "border": "solid 1px grey"});
+    $("#listBricks" + nextSeq).css({"width": "relative","height": "100%"});
+    $("#listBricks" + nextSeq).css({"text-align": "center", "border": "solid 1px grey"});
     var resultsList2 = document.getElementById("listBricks" + nextSeq);
     $(resultsList2).append("<li id=\"pane1\">Get New CLU</li>");
-    $("#listBricks" + nextSeq + " > " + "#pane1").css({"margin-top":"0.5em","background": "#4ab8eb", "background-position": "right", "background-image": "url(searchListItem.png)", "background-repeat": "no-repeat", "background-size": " 20% 100%", "height": "100%", "font-weight": "bold", "font-style": "italic", "font-size": "150%"});
+    $("#listBricks" + nextSeq + " > " + "#pane1").css({"background": "#4ab8eb", "background-position": "right", "background-image": "url(searchListItem.png)", "background-repeat": "no-repeat", "background-size": " 20% 100%", "height": "100%", "font-weight": "bold", "font-style": "italic", "font-size": "150%"});
     $(resultsList2).append("<li id=\"pane2\"><a>" + setUpper(result.results[nextSeq].value) + "</a></li>");
-    $("#listBricks" + nextSeq + " > " + "#pane2").css({"margin-top":"0.5em","height": "100%", "color": "grey", "font-style": "italic", "font-size": "150%", "font-family": "'Lato', sans-serif"});
+    $("#listBricks" + nextSeq + " > " + "#pane2").css({"margin-top": "0.5em", "height": "100%", "color": "grey", "font-style": "italic", "font-size": "150%", "font-family": "'Lato', sans-serif"});
     $(resultsList2).append("<li id=\"pane3\">Throw This CLU</li>");
-    $("#listBricks" + nextSeq + " > " + "#pane3").css({"margin-top":"0.5em","background": "#fc344c", "background-image": "url(delListItemRed.png)", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%", "font-weight": "bold", "font-style": "italic", "font-size": "150%"});
+    $("#listBricks" + nextSeq + " > " + "#pane3").css({"background": "#fc344c", "background-image": "url(delListItemRed.png)", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%", "font-weight": "bold", "font-style": "italic", "font-size": "150%"});
     $(resultsList).append("</ul>");
-    $("#listBricks" + nextSeq).css({"padding-left":"0em"});
+    $("#listBricks" + nextSeq).css({"padding-left": "0em"});
     carousels[nextSeq] = new Carousel("#carousel" + nextSeq);
     carousels[nextSeq].init();
     console.log("next number " + nextSeq);
     count++;
-} 
-
-function addWikiElement(){
-    $('#lineup').html("<p id=\"resultText\"> Didn't Get <br><span> a Clu?!</span></p>").css({"font-size": "200%","line-height":"5","position":"absolute"});
-    $('#lineup').css({top: "14%"});
-    $('#lineup').animate({height: "10em"});
-    var holder = document.getElementById("resultContent");
-    $(holder).append("<div id=\"random\" onClick=\"randomPage()\">" + "Get Random Clu"  + "</div>");
-    $('#random').css({"text-align":"center","background":"#fc344c","margin-top":"2%","height":"2.5em","width":"90%","margin-left":"5%","font-size":"1.5em","color":"white"});
-    $(holder).append("<div id=\"startOver\" onClick=\"startOver()\">" + "Start Over"  + "</div>");
-    $('#startOver').css({"text-align":"center","background":"#29cbd5","margin-top":"2%","height":"2.5em","width":"90%","margin-left":"5%","font-size":"1.5em","color":"white"});
-    }
-//     $(holder).append("<ul data-role=\"listview\"");
-//    $(holder).append("<li id=\random"+" onClick=\"randomPage()\">"+"Get Random" + "</li>").css({"text-align":"center","background":"red"});
-//    $(holder).append("<li id=\wiki"+" onClick=\"gotowiki()\">"+"Go To Wiki" + "</li>").css({"text-align":"center","background":"blue"});
-//    $(holder).append("<li id=\startOver"+" onClick=\"startOver()\">"+"Start Over" + "</li").css({"text-align":"center","background":"pink"});
-//}   $(holder).append("</ul>");.
-
-function parseFromString(value){
-    var parsedNumber;
-    console.log(value.length);
-    for (var i = 0; i < value.length; i++) { 
-            parsedNumber= Number(new String(value.charAt(i)));
-            console.log("pasre: " +parsedNumber + isNaN(parsedNumber));
-            if(!(isNaN(parsedNumber))){
-                return parsedNumber;
-            }
-        }
 }
 
-function setUpper(str){
+function addWikiElement() {
+    $('#lineup').html("<p id=\"resultText\"> <span> Didn't Get a Clue?!</span></p>").css({"font-size": "100%", "position": "absolute", "text-align": "center"});
+    $('#lineup').css({top: "0%", "font-family": "'Lato', sans-serif"});
+    $('#lineup').animate({height: "100%"});
+    var holder = document.getElementById("resultContentForm");
+    $(holder).append("<div id=\"random\" onClick=\"randomPage()\">" + "Get Random Clue" + "</div>");
+    $('#random').css({"text-align": "center", "background": "#fc344c", "margin": "10% 0em 0em 15%", "height": "30%", "width": "150%", "font-size": "1.5em", "color": "white", "font-family": "'Lato', sans-serif"});
+    $(holder).append("<div id=\"startOver\" onClick=\"startOver()\">" + "Start Over" + "</div>");
+    $('#startOver').css({"text-align": "center", "background": "#29cbd5", "margin": "10% 0em 0em 15%", "height": "30%", "width": "150%", "font-size": "1.5em", "color": "white", "font-family": "'Lato', sans-serif"});
+    $('#lineup span').css({"font-size": "2.5em"});
+}
+
+function parseFromString(value) {
+    var parsedNumber;
+    console.log(value.length);
+    for (var i = 0; i < value.length; i++) {
+        parsedNumber = Number(new String(value.charAt(i)));
+        console.log("pasre: " + parsedNumber + isNaN(parsedNumber));
+        if (!(isNaN(parsedNumber))) {
+            return parsedNumber;
+        }
+    }
+}
+
+function setUpper(str) {
     var len = str.length;
-    var res = str[0].toUpperCase()+ str.substring(1, len);
+    var res = str[0].toUpperCase() + str.substring(1, len);
     return res;
+}
+
+function readMore() {
+    if (firstTime) {
+        $('#aboutContentForm').append("<p id=\"readMoreText\" onClick=\"closeText()\">" + "People surf the Net not only for fun, but also to discover and learn.<br> Serendipitous learning recognizes that search for knowledge may occur by chance, or as a by-product of the main task.<br> Knowledge retention as a result of serendipitous learning tends to be high, because motivation remains with the learner. It is a new way of learning that requires relatively low effort with a high payoff. Serendipitous learning can also make you gain new insights or interesting associations for our entrees and purchase a wide knowledge about any field.When you enter a term in CLU you will get a result page which presents you a picture and 3 key-words designed as building bricks that explain and describe the term you entered. By clicking on one of the key-words you can see the context to term or get an explanation about that word. The interface design in a fun, playful and simple way which made especially for the human eye. Clu's purpose is to make it easier for you to search for knowledge and for sure a lot more fun!" + "</p>");
+        $('#readMoreText').css({"color": "grey", "font-weight": "bold", "margin-left": "5%", "font-family": "'Lato', sans-serif"});
+         firstTime = false;
+    } else {
+  $('#readMoreText').remove();
+    firstTime = true;
+    }
 }
