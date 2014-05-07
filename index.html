@@ -3,9 +3,9 @@
     <head>
         <title>CLU - Less Is More </title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-
+        <!-- <meta name="viewport" content="initial-scale=1.0,user-scalable=yes,maximum-scale=1,width=device-width" />
+         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <!-- JS -->
         <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
@@ -20,57 +20,56 @@
         <link rel="stylesheet" type="text/css" href="my.css" />
     </head>
     <body>  
-<div class="loader"></div>
+        <div class="loader"></div>
         <!-- Main Page -->
         <div id="mainPage" data-role="page" data-position="fixed" class="ui-responsive-panel">
 
-            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="menuPanel" data-theme="d">
+            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="overlay" id="menuPanel">
 
-                <ul data-role="listview" data-theme="d" data-divider-theme="a" style="margin-top:-16px;" class="nav-search">
-                    <li data-icon="home" data-filtertext="wai-aria voiceover accessibility screen reader">
+                <ul data-role="listview"  class="nav-search" id="mPanel">
+                    <li data-icon="myapp-home" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a href="#mainPage">Home</a>
                     </li>
-                    <li data-icon="star" data-filtertext="wai-aria voiceover accessibility screen reader">
-                        <a id="randomPageMain" onclick="randomPage();">Get A Clu!</a>
+                    <li data-icon="myapp-light" data-filtertext="wai-aria voiceover accessibility screen reader">
+                        <a id="randomPageMain" onclick="randomPage();">Random Clu</a>
                     </li>
-                    <li data-icon="info" data-filtertext="wai-aria voiceover accessibility screen reader">
+                    <li data-icon="myapp-about" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a href="#aboutPage">About</a>
                     </li>
                 </ul>
-
-                <!-- panel content goes here -->
             </div><!-- /panel -->
             <header data-role="header" id="mainPageHeader" >
                 <a href="#menuPanel" id="menuPanelButton" ></a>
                 <a id="mainLight" onclick="randomPage();"></a>
                 <p>Clu</p>
-                
+
             </header>
 
             <div data-role="content" id="mainContent">
-                <p id="mainText"> Let's </p>
-                <p id="mainTitle">Get a clue </p>
-              <!--  <form id="mainContentForm" >  -->
-              <div data-role="fieldcontain" id="mainContentForm">
-    <input type="search" id="mainSearch" value="" placeholder="About..."/>
-</div>  
-                   <!-- <input type="text" id="mainSearch" placeholder="About..." value="" lang="en"  autocomplete="on">-->
-              <!--  </form>-->
+                <p id="mainText"> Let's <br><span>Get a clue</span></p>
+                <!--                <p id="mainText"> Let's </p>
+                                <p id="mainTitle">Get a clue </p>-->
+                <!--  <form id="mainContentForm" >  -->
+                <!-- <div data-role="fieldcontain" id="mainContentForm">-->
+                <input type="search" id="mainSearch" value="" placeholder="About..."/>
+                <!--</div> --> 
+                <!-- <input type="text" id="mainSearch" placeholder="About..." value="" lang="en"  autocomplete="on">-->
+                <!--  </form>-->
             </div>
         </div>
 
         <!-- Result Page -->
         <div id="resultPage" data-role="page" data-position="fixed" class="ui-responsive-panel">
-            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="resultPanel" data-theme="d">
+            <div data-role="panel" data-position="left" data-position-fixed="true" data-display="overlay" id="resultPanel">
 
-                <ul data-role="listview" data-theme="d" data-divider-theme="a" style="margin-top:-16px;" class="nav-search">
-              <li data-icon="home" data-filtertext="wai-aria voiceover accessibility screen reader">
+                <ul data-role="listview"  class="nav-search" id="rPanel">
+                    <li data-icon="myapp-home" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a href="#mainPage">Home</a>
                     </li>
-                    <li data-icon="star" data-filtertext="wai-aria voiceover accessibility screen reader">
-                        <a id="randomPageResult" onclick="randomPage();">Get A Clu!</a>
+                    <li data-icon="myapp-light" data-filtertext="wai-aria voiceover accessibility screen reader">
+                        <a id="randomPageResult" onclick="randomPage();">Random Clu</a>
                     </li>
-                    <li data-icon="info" data-filtertext="wai-aria voiceover accessibility screen reader">
+                    <li data-icon="myapp-about" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a href="#aboutPage">About</a>
                     </li>
                 </ul>
@@ -79,10 +78,10 @@
             </div><!-- /panel -->
             <header data-role="header" id="resultPageHeader" data-theme="d">
                 <a href="#resultPanel" id="resultPanelButton" data-iconpos="notext"></a>
-<!--                <a href="" onclick="randomPage()" data-icon="star" data-iconpos="notext"></a>-->
+                <!--                <a href="" onclick="randomPage()" data-icon="star" data-iconpos="notext"></a>-->
                 <p id="resultTitle">Clu</p>
                 <a id="resultLight" onclick="randomPage();"></a>
-                    <input type="search" id="resultSearch"  lang="en" name="name" onkeydown="if (event.keyCode === 13)
+                <input type="search" id="resultSearch"  lang="en" name="name" onkeydown="if (event.keyCode === 13)
                                 getCLU(document.getElementById('resultSearch').value)" value="" placeholder="Search"/>               
             </header>
 
@@ -98,53 +97,44 @@
             </div>
         </div>
 
-        <!--         About 
-                <div id="aboutPage" data-role="page" data-position="fixed">
-                    <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="aboutPanelButton" data-theme="d">
-        
-                        <ul data-role="listview" data-theme="d" data-divider-theme="a" style="margin-top:-16px;" class="nav-search">
-                            <li data-icon="delete" data-iconpos="left" id="listtt">
-                                <a href="#" data-iconpos="left" data-rel="close">Close menu</a>
-                            </li>
-                            <li data-icon="home" data-iconpos="left" data-filtertext="wai-aria voiceover accessibility screen reader">
-                                <a href="#mainPage">Home</a>
-                            </li>
-                            <li data-icon="star" data-iconpos="left" data-filtertext="wai-aria voiceover accessibility screen reader">
-                                <a onclick="randomPage();">Get A Clu!</a>
-                            </li>
-                            <li data-icon="gear" data-iconpos="left" data-filtertext="wai-aria voiceover accessibility screen reader">
-                                <a href="#settingsPage" data-icon="gear" >Settings</a>
-                            </li>
-                            <li data-icon="gear" data-iconpos="left" data-filtertext="wai-aria voiceover accessibility screen reader">
-                                <a href="" onClick="getHistory()" data-icon="gear" >History</a>
-                            </li>
-                            <li data-icon="info" data-iconpos="left" data-filtertext="wai-aria voiceover accessibility screen reader">
-                                <a href="#aboutPage">About</a>
-                            </li>
+        About 
+        <div id="aboutPage" data-role="page" data-position="fixed">
+            <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="aboutPanelButton" data-theme="d">
+
+                <ul data-role="listview"  class="nav-search" id="aPanel">
+                    <li data-icon="myapp-home" data-filtertext="wai-aria voiceover accessibility screen reader">
+                        <a href="#mainPage">Home</a>
+                    </li>
+                    <li data-icon="myapp-light" data-filtertext="wai-aria voiceover accessibility screen reader">
+                        <a id="randomPageAbout" onclick="randomPage();">Random Clu</a>
+                    </li>
+                    <li data-icon="myapp-about" data-filtertext="wai-aria voiceover accessibility screen reader">
+                        <a href="#aboutPage">About</a>
+                    </li>
+                </ul>
+
+                panel content goes here 
+            </div> /panel 
+            <header data-role="header" id="aboutPageHeader" data-theme="d">
+                <a href="#aboutPanelButton" data-iconpos="notext"></a>
+                <h1 id="aboutTitle"> ABOUT US</h1>
+            </header>
+            <div data-role="content" id="aboutContent" align="center">
+                <form id="aboutContentForm">
+                    <div id="listcontainerAbout" align="center">
+                        <ul data-role="listview" id="aboutList" data-icon="false" >
+                            <li id='aboutUS'> <p> CLU IS AN APP CREATED 
+                                    <br>
+                                    BY STUDENTS AT IDC IN HERZELYA <br>
+                                    AS PART OF THE MILAB STUDIO</p></li>
+                            <li id='loveButton'> WON'T YOU SHOW US<br> SOME LOVE?</li>
+                            <li><a id='rateButton' onclick="rateUs()"> RATE US <br> WE REALLY APPRECITE IT </a></li>
+                            <li><a id='friendButton' onclick="tellFriend()"> TELL A FRIEND <br> DON'T KEEP THEM STUPID</a> </li>
                         </ul>
-        
-                         panel content goes here 
-                    </div> /panel 
-                    <header data-role="header" id="aboutPageHeader" data-theme="d">
-                        <a href="#aboutPanelButton" data-iconpos="notext"></a>
-                        <h1 id="aboutTitle"> ABOUT US</h1>
-                    </header>
-                    <div data-role="content" id="aboutContent" align="center">
-                        <form id="aboutContentForm">
-                            <div id="listcontainerAbout" align="center">
-                                <ul data-role="listview" id="aboutList" data-icon="false" >
-                                    <li id='aboutUS'> <p> CLU IS AN APP CREATED 
-                                            <br>
-                                            BY STUDENTS AT IDC IN HERZELYA <br>
-                                            AS PART OF THE MILAB STUDIO</p></li>
-                                    <li id='loveButton'> WON'T YOU SHOW US<br> SOME LOVE?</li>
-                                    <li><a id='rateButton' onclick="rateUs()"> RATE US <br> WE REALLY APPRECITE IT </a></li>
-                                    <li><a id='friendButton' onclick="tellFriend()"> TELL A FRIEND <br> DON'T KEEP THEM STUPID</a> </li>
-                                </ul>
-                            </div>
-                        </form>
                     </div>
-                </div>-->
+                </form>
+            </div>
+        </div>
         <script src="carousel.js"></script>
         <script type="text/javascript" src="code.js"></script> 
     </body>

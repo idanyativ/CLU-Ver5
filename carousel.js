@@ -27,19 +27,15 @@
             /**
              * set the pane dimensions and scale the container
              */
- function setPaneDimensions() {
-            //    element.width = screen.width;
+   function setPaneDimensions() {
                 pane_width = element.width();
-                //console.log(element);
                 panes.each(function() {
-                   // $(this).width(screen.width-20);
-                                      //
                 $(this).width(pane_width);
-
                 });
                 container.width(pane_width*pane_count);
                 self.showPane(1, true);
             };
+
 
             /**
              * show pane by index
