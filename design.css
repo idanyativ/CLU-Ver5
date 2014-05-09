@@ -183,6 +183,7 @@ padding: 0;
     background-size: 100% 100%;
      margin-left: 1%;
      margin-top: 1%;
+     
 }
 
 #resultTitle{
@@ -290,13 +291,16 @@ a#mPanel {
     background:#141414;
     color : #b3b3b3;
     font-family: 'Lato', sans-serif;
+    
 /*    text-align: center;*/
 }
 
 #mPanel a{
         background:#141414;
-    color : #b3b3b3;
-    font-family: 'Lato', sans-serif;
+    
+        color : #b3b3b3;
+    
+        font-family: 'Lato', sans-serif;
 }
 #rPanel a{
         background:#141414;
@@ -317,4 +321,45 @@ a#mPanel {
      /* height: 100%; */
      /* position: absolute; */
      /* display: none; */
+}
+
+#mPanel .ui-btn{
+     padding : .7em 5em; 
+     text-shadow: 0 0;
+     font-family: 'Lato', sans-serif;
+     border-color: #1B1B1B;
+     border-width: 2px 0 0;
+}
+
+#mPanel .ui-btn-icon-right:after{
+     left : 1.5625em;
+}
+
+#rPanel .ui-btn{
+     padding : .7em 5em;
+     text-shadow: 0 0;
+     font-family: 'Lato', sans-serif;
+     border-color: #1B1B1B;
+     border-width: 2px 0 0;
+}
+
+#rPanel .ui-btn-icon-right:after{
+     left : 1.5625em;
+}
+
+#aPanel .ui-btn{
+     padding : .7em 5em;
+     text-shadow: 0 0;
+     font-family: 'Lato', sans-serif;
+     border-color: #1B1B1B;
+     border-width: 2px 0 0;
+}
+
+#aPanel .ui-btn-icon-right:after{
+     left : 1.5625em;
+}
+
+#mPanel .ui-listview>.ui-li-static, .ui-listview>.ui-li-divider, .ui-listview>li>a.ui-btn{
+    
+     border-color: #1B1B1B;
 }
