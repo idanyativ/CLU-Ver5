@@ -3,15 +3,18 @@
     <head>
         <title>CLUE - Less Is More </title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width,height=device-height , maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0 initial-scale=1" > 
+        <meta name="viewport" content="width=device-width,height=device-height user-scalable=no" > 
         <!-- JS -->
+        
         <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
         <script src="modernizr.js"></script>
         <script type="text/javascript" src="hammer.js"></script>
 
 
         <!-- CSS -->
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
         <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
         <link rel="stylesheet" type="text/css" href="design.css" />
@@ -49,7 +52,8 @@
             <div data-role="content" id="mainContent">
                 <p id="mainText"> Let's <br><span>Get a clue</span></p>
                  <div data-role="fieldcontain" id="mainContentForm">
-                <input type="search" id="mainSearch" value="" placeholder="About..."/>
+                <input type="text" id="mainSearch" value="" placeholder="About..." class="ui-input-text" onclick="getCLU(document.getElementById('mainSearch').value)"/>
+               
                 </div>  
             </div>
         </div>
@@ -61,13 +65,13 @@
                      <li id="rpClose" data-icon="delete" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a href="" data-rel="close" >Close</a>
                     </li>
-                    <li id="rpHome" data-icon="myapp-home" data-filtertext="wai-aria voiceover accessibility screen reader">
+                    <li data-icon="myapp-home" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a href="#mainPage">Home</a>
                     </li>
-                    <li  id="rpRandom" data-icon="myapp-light" data-filtertext="wai-aria voiceover accessibility screen reader">
+                    <li  data-icon="myapp-light" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a id="randomPageResult" onclick="randomPage();">Random Clu</a>
                     </li>
-                    <li id="rpAbout" data-icon="myapp-about" data-filtertext="wai-aria voiceover accessibility screen reader">
+                    <li data-icon="myapp-about" data-filtertext="wai-aria voiceover accessibility screen reader">
                         <a href="#aboutPage">About</a>
                     </li>
                 </ul>
@@ -76,10 +80,10 @@
             </div><!-- /panel -->
             <header data-role="header" id="resultPageHeader" data-theme="d">
                 <a href="#resultPanel" id="resultPanelButton" data-iconpos="notext"></a>
-                <p id="resultTitle">Clu</p>
+                <p id="resultTitle">Clue</p>
                 <a id="resultLight" onclick="randomPage();"></a>
-                <input type="search" id="resultSearch"  lang="en" name="name" onkeydown="if (event.keyCode === 13)
-                                getCLU(document.getElementById('resultSearch').value)" value="" placeholder="Search"/>               
+                <input  data-clear-btn="true" type="text" id="resultSearch"  lang="en" name="name" onkeydown="if (event.keyCode === 13)
+                    getCLU(document.getElementById('resultSearch').value)" value="" placeholder="Search"  />  
             </header>
 
           
@@ -120,7 +124,7 @@
             </header>
             <div data-role="content" id="aboutContent">
                 <div id="aboutContentForm">
-                    <p id="aboutText"> Get a CLU.<br><span>Don't be stupid.</span></p>
+                    <p id="aboutText"> Get a CLUE.<br><span>Don't be stupid.</span></p>
                     <p id="aboutFullText">Clu is a simple, quick and enjoyable way to learn new things.<br>
 
 clue is "Made for humans"- adjusted to the human eye and based on associative learning principles.<br>

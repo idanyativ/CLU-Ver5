@@ -6,9 +6,17 @@ html,body, .ui-link{
 }
 #mainSearch{
      /* width: 90%; */ 
-    color: black;
+    background-repeat: no-repeat !important;
+    
+  //   background: url("search.png") !important; 
+         /* background-size: 50% 50%; */
+     /* background-color:transparent; */
+    background-color: #08d2c5 !important;
+    background-repeat: no-repeat !important;
+     /* color: black; */
      /* top: 63%; */
      margin: 70% 0% 0% 0%;
+     /* background-color: rgb(11,191,179) !important; */
      /* position: relative; */
      /* display: inherit; */
 }
@@ -110,7 +118,12 @@ html,body, .ui-link{
      border-radius: 0px;
 }
 
-
+input#mainSearch{
+    -webkit-border-radius: 0em;
+    border-radius: 0px;
+    
+    /* left: 10px; */
+}
 
 
 #CLUbutton,#speechToolMain,#mainSpeech {
@@ -212,8 +225,9 @@ padding: 0;
 	width: 100%;
 	height: 100%;
 	z-index: 9999;
-	background: url('http://code.jquery.com/mobile/1.4.0/images/ajax-loader.gif') 50% 50% no-repeat rgb(249,249,249);
+	background: url('loader2.gif') 50% 50% no-repeat rgb(249,249,249) !important;
 }
+
 
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:    white;
@@ -274,17 +288,10 @@ padding: 0;
     box-shadow:0 0px 0px rgba(0,0,0,0);
 }
 
-#mainSearch .ui-alt-icon .ui-icon-search:after,#mainSearch .ui-alt-icon, #mainSearch .ui-icon-search:after,#mainSearch.ui-input-search:after {
-    background-image: url("search.png") !important; 
-        background-color:transparent;
-     border: none !important; 
-     box-shadow: none !important; 
-    background-repeat:  no-repeat;
-    background-size: 100% 100%;
-}
+
 
 #resultPage.ui-page-theme-a .ui-body-inherit{
-        background: #141414;
+         /* background-color: rgb(11,191,179); */
 }
 
 a#mPanel {
@@ -362,4 +369,30 @@ a#mPanel {
 #mPanel .ui-listview>.ui-li-static, .ui-listview>.ui-li-divider, .ui-listview>li>a.ui-btn{
     
      border-color: #1B1B1B;
+}
+
+#searchIconMain{
+    height: 4%;
+    position: absolute;
+    top: 96%;
+    left: 100%
+}
+
+#searchIconResult{
+    height: -1%;
+    position: absolute;
+    top: 95%;
+    left: 100%
+}
+
+#mainPage input[type=text] {
+    background-position: 100% 100%;
+    background-image: url('search.png');
+    background-repeat: no-repeat;
+    /* background-size: 10% -1.5%; */
+}
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br{
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius:0;
 }

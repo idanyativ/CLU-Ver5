@@ -18,25 +18,11 @@ var numberOfSearch = 0;
 var firstTime = true;
 
 $(document).on('keydown', '#mainSearch', function(noa) {
-//    console.log(e);
     if (noa.keyCode === 13) {
         getCLU($(this).val());
         $(".loader").fadeIn("slow");
     }
-
 });
-//window.onbeforeunload = function(e) {
-//  alert( 'Dialog text here.');
-//};
-//$('#resultPage').bind('click', function(event) {
-// if(event.target.href) $(window).unbind('beforeunload');
-//});
-//$('#resultPage').bind('beforeunload', function(event) {
-// getCLU(getInputValue());
-//});
-//$('#resultPage').on('beforeunload' ,function() {
-//    getCLU(getInputValue());
-//});
 
 $(document).on('keydown', '#resultSearch', function(noa) {
 //    console.log(e);
@@ -44,7 +30,14 @@ $(document).on('keydown', '#resultSearch', function(noa) {
         getCLU($(this).val());
         $(".loader").fadeIn("slow");
     }
+});
 
+$(document).on('click', '#mainPage', function(idan) {
+    var myvalue = $("mainSearch").val();
+    if (myvalue !== undefined) {
+        getCLU($(this).val());
+        $(".loader").fadeIn("slow");
+    }
 });
 /**
  * 
@@ -86,6 +79,7 @@ function sendValueToServer(value) {
             .done(function(response) {
                 console.log(response);
                 $(".loader").fadeOut("slow");
+                document.activeElement.blur();
                 var incomeResults = JSON.parse(response);
                 result = JSON.parse(response);
                 // valid that the results isn't null
@@ -366,3 +360,39 @@ function readMore() {
     firstTime = true;
     }
 }
+
+$("#mainSearch").autocomplete({
+    source: function(request, response) {
+        console.log(request.term);
+        $.ajax({
+            url: "http://en.wikipedia.org/w/api.php",
+            dataType: "jsonp",
+            data: {
+                'action': "opensearch",
+                'format': "json",
+                'search': request.term
+            },
+            success: function(data) {
+                response(data[1]);
+            }
+        });
+    }
+});
+
+$("#resultSearch").autocomplete({
+    source: function(request, response) {
+        console.log(request.term);
+        $.ajax({
+            url: "http://en.wikipedia.org/w/api.php",
+            dataType: "jsonp",
+            data: {
+                'action': "opensearch",
+                'format': "json",
+                'search': request.term
+            },
+            success: function(data) {
+                response(data[1]);
+            }
+        });
+    }
+});
