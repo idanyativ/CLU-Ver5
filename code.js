@@ -312,11 +312,11 @@ function addElement(nextSeq) {
     $("#listBricks" + nextSeq).css({"width": "relative","height": "100%"});
     $("#listBricks" + nextSeq).css({"text-align": "center", "border": "solid 1px grey"});
     var resultsList2 = document.getElementById("listBricks" + nextSeq);
-    $(resultsList2).append("<li id=\"pane1\">Get New CLU</li>");
+    $(resultsList2).append("<li id=\"pane1\">Get New CLUE</li>");
     $("#listBricks" + nextSeq + " > " + "#pane1").css({"background": "#4ab8eb", "background-position": "right", "background-image": "url(searchListItem.png)", "background-repeat": "no-repeat", "background-size": " 20% 100%", "height": "100%", "font-weight": "bold", "font-style": "italic", "font-size": "150%"});
     $(resultsList2).append("<li id=\"pane2\"><a>" + setUpper(result.results[nextSeq].value) + "</a></li>");
     $("#listBricks" + nextSeq + " > " + "#pane2").css({"margin-top": "0.5em", "height": "100%", "color": "grey", "font-style": "italic", "font-size": "150%", "font-family": "'Lato', sans-serif"});
-    $(resultsList2).append("<li id=\"pane3\">Throw This CLU</li>");
+    $(resultsList2).append("<li id=\"pane3\">Throw This CLUE</li>");
     $("#listBricks" + nextSeq + " > " + "#pane3").css({"background": "#fc344c", "background-image": "url(delListItemRed.png)", "background-repeat": "no-repeat", "background-size": "20% 100%", "height": "100%", "font-weight": "bold", "font-style": "italic", "font-size": "150%"});
     $(resultsList).append("</ul>");
     $("#listBricks" + nextSeq).css({"padding-left": "0em"});
@@ -358,7 +358,7 @@ function setUpper(str) {
 
 function readMore() {
     if (firstTime) {
-        $('#aboutContentForm').append("<p id=\"readMoreText\" onClick=\"closeText()\">" + "People surf the Net not only for fun, but also to discover and learn.<br> Serendipitous learning recognizes that search for knowledge may occur by chance, or as a by-product of the main task.<br> Knowledge retention as a result of serendipitous learning tends to be high, because motivation remains with the learner. It is a new way of learning that requires relatively low effort with a high payoff. Serendipitous learning can also make you gain new insights or interesting associations for our entrees and purchase a wide knowledge about any field.When you enter a term in CLU you will get a result page which presents you a picture and 3 key-words designed as building bricks that explain and describe the term you entered. By clicking on one of the key-words you can see the context to term or get an explanation about that word. The interface design in a fun, playful and simple way which made especially for the human eye. Clu's purpose is to make it easier for you to search for knowledge and for sure a lot more fun!" + "</p>");
+        $('#aboutContentForm').append("<p id=\"readMoreText\" onClick=\"closeText()\">" + "People surf the Net not only for fun, but also to discover and learn.<br> Serendipitous learning recognizes that search for knowledge may occur by chance, or as a by-product of the main task.<br> Knowledge retention as a result of serendipitous learning tends to be high, because motivation remains with the learner. It is a new way of learning that requires relatively low effort with a high payoff. Serendipitous learning can also make you gain new insights or interesting associations for our entrees and purchase a wide knowledge about any field.When you enter a term in CLU you will get a result page which presents you a picture and 3 key-words designed as building bricks that explain and describe the term you entered. By clicking on one of the key-words you can see the context to term or get an explanation about that word. The interface design in a fun, playful and simple way which made especially for the human eye. Clue's purpose is to make it easier for you to search for knowledge and for sure a lot more fun!" + "</p>");
         $('#readMoreText').css({"color": "grey", "font-weight": "bold", "margin-left": "5%", "font-family": "'Lato', sans-serif"});
          firstTime = false;
     } else {
