@@ -32,7 +32,7 @@ $(document).on('keydown', '#resultSearch', function(noa) {
     }
 });
 
-$(document).on('click', '#mainPage', function(idan) {
+$(document).on('click', '#mainSearch', function(idan) {
     var myvalue = $("mainSearch").val();
     if (myvalue !== undefined) {
         getCLU($(this).val());
