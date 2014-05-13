@@ -17,6 +17,13 @@ var removedItem = 0;
 var numberOfSearch = 0;
 var firstTime = true;
 
+$("mainSearch").click(function() {
+    var myvalue = $("mainSearch").val();
+    if (myvalue !== undefined) {
+        getCLU($(this).val());
+        $(".loader").fadeIn("slow");
+    }
+});
 $(document).on('keydown', '#mainSearch', function(noa) {
     if (noa.keyCode === 13) {
         getCLU($(this).val());
@@ -32,19 +39,14 @@ $(document).on('keydown', '#resultSearch', function(noa) {
     }
 });
 
-$(document).on('click', '#mainSearch', function(idan) {
-    var myvalue = $("mainSearch").val();
-    if (myvalue !== undefined) {
-        getCLU($(this).val());
-        $(".loader").fadeIn("slow");
-    }
-});
+
 /**
  * 
  * @param inputValue - Get the value from the user
  * @ build the 
  */
 function getCLU(inputValue) {
+    
     value = inputValue;
     console.log("getCLu : " + value);
     console.log(screen.height);
@@ -52,6 +54,7 @@ function getCLU(inputValue) {
     if (value === "") {
         console.log("value cant be null");
     } else {
+        $(".loader").fadeIn("slow");
         // replace space to underline
         if (value.search(" ") !== -1) {
             value.replace(" ", "_");
@@ -79,7 +82,7 @@ function sendValueToServer(value) {
             .done(function(response) {
                 console.log(response);
                 $(".loader").fadeOut("slow");
-                document.activeElement.blur();
+                document.getElementById('resultPage').focus()
                 var incomeResults = JSON.parse(response);
                 result = JSON.parse(response);
                 // valid that the results isn't null
@@ -106,44 +109,6 @@ function build() {
     });
     // $.when(sendValueToServer).done(buildPage(resultsInString, image));
 }
-
-/**
- * 
- * @param  value - get the input value and send it to server
- * @returns {Boolean}
- */
-//function sendValueToServer(value) {
-//    console.log("Get Clue About " + value);
-//    $.ajax({
-//        type: "GET",
-//        url: 'http://noanimrodidan.milab.idc.ac.il/?q=' + value,
-//        success: function(response,function(callback)) {    
-//            console.log(response);
-//            var incomeResults = JSON.parse(response);
-//            result = JSON.parse(response);
-//            // valid that the results isn't null
-//            if (incomeResults === null) {
-//                console.log("no results");
-//            } else {
-//                
-//                // if not null - build the page 
-//                length = incomeResults.results.length;
-//                resultsInString = JSON.parse(JSON.stringify(incomeResults));
-//                threeResults = cutResults(resultsInString);
-//                image = incomeResults.imageURL;
-//                history[numberOfSearch] = value;
-//                numberOfSearch++;
-//                console.log(history); 
-//            }
-//        },function(){
-//            
-//        }
-//        complete:function() {
-//            buildPage(resultsInString, image);
-//        }
-//    });
-//    return false;
-//}
 
 /**
  * Open the input value in wikipedia
