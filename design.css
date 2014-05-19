@@ -228,17 +228,6 @@ padding: 0;
 	z-index: 9999;
 	background: url('loader2.gif') 50% 50% no-repeat rgb(249,249,249) !important;
 }
-
-/*.mainLoader {
-	position: fixed;
-	left: 0px;
-	top: 0px;
-        display: none;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background: url('loader2.gif') 50% 50% no-repeat rgb(249,249,249) !important;
-}*/
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:    white;
 }
