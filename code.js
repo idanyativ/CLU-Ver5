@@ -17,6 +17,11 @@ var removedItem = 0;
 var numberOfSearch = 0;
 var firstTime = true;
 
+//$("mainPage").before(function() {
+//        $(".mainLoader").fadeIn("slow");
+//    }
+//);
+
 $("mainSearch").click(function() {
     var myvalue = $("mainSearch").val();
     if (myvalue !== undefined) {
@@ -39,6 +44,23 @@ $(document).on('keydown', '#resultSearch', function(noa) {
     }
 });
 
+//$("#resultSearch").focus(function(){
+//  $("#resultContentForm").css({"display":"none"})
+//});
+
+//$("#resultSearch").focus(function(){
+//     console.log("in");
+//      if(detectmob()){
+//          alert("aaa");
+//      $("#resultContentForm").css({"display":"none"});  
+//    }else{
+//       $("#resultContentForm").css({"display":"list-item"}); 
+//    }
+//});
+//$("#resultSearch").blur(function(){
+//    console.log("out");
+//  $("#resultContentForm").css({"display":"inline"});
+//});
 
 /**
  * 
@@ -82,7 +104,7 @@ function sendValueToServer(value) {
             .done(function(response) {
                 console.log(response);
                 $(".loader").fadeOut("slow");
-                document.getElementById('resultPage').focus()
+                document.getElementById('resultPage').focus();
                 var incomeResults = JSON.parse(response);
                 result = JSON.parse(response);
                 // valid that the results isn't null
@@ -291,9 +313,9 @@ function addWikiElement() {
     $('#lineup').animate({height: "100%"});
     var holder = document.getElementById("resultContentForm");
     $(holder).append("<div id=\"random\" onClick=\"randomPage()\">" + "Get Random Clue" + "</div>");
-    $('#random').css({"text-align": "center", "background": "#fc344c", "margin": "10% 0em 0em 15%", "height": "30%", "width": "150%", "font-size": "1.5em", "color": "white", "font-family": "'Lato', sans-serif"});
+    $('#random').css({"text-align": "center", "background": "#fc344c", "margin": "20% 0em 0em 16%", "height": "10%", "width": "67%", "font-size": "1.5em", "color": "white", "font-family": "'Lato', sans-serif","position":"fixed"});
     $(holder).append("<div id=\"startOver\" onClick=\"startOver()\">" + "Start Over" + "</div>");
-    $('#startOver').css({"text-align": "center", "background": "#29cbd5", "margin": "10% 0em 0em 15%", "height": "30%", "width": "150%", "font-size": "1.5em", "color": "white", "font-family": "'Lato', sans-serif"});
+    $('#startOver').css({"text-align": "center", "background": "#29cbd5", "margin": "2% 0em 0em 16%", "height": "10%", "width": "67%", "font-size": "1.5em", "color": "white", "font-family": "'Lato', sans-serif","position":"fixed"});
     $('#lineup span').css({"font-size": "2.5em"});
 }
 
@@ -357,7 +379,28 @@ $("#resultSearch").autocomplete({
             },
             success: function(data) {
                 response(data[1]);
+                
             }
         });
     }
 });
+
+function detectmob() { 
+ if( navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i)
+ 
+ ){
+ console.log(navigator.userAgent);
+    return true;
+  }
+ else {
+     console.log(navigator.userAgent);
+    return false;
+  }
+}
+

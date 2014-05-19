@@ -209,6 +209,7 @@ padding: 0;
     width: 100%;
     height: 46%;
     position: absolute;
+    display: list-item;
 }
 
 #rateButton ,#friendButton{
@@ -228,7 +229,16 @@ padding: 0;
 	background: url('loader2.gif') 50% 50% no-repeat rgb(249,249,249) !important;
 }
 
-
+/*.mainLoader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+        display: none;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('loader2.gif') 50% 50% no-repeat rgb(249,249,249) !important;
+}*/
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:    white;
 }
@@ -321,13 +331,15 @@ a#mPanel {
 }
 #resultContentForm{
      height: 34%;
-     position: absolute;
+     position: fixed;
+     /* display: none; */
      top: 65%;
 }
 #resultContent{
-     /* height: 100%; */
-     /* position: absolute; */
-     /* display: none; */
+      /* height: 100%; */ 
+      /* position: fixed; */ 
+      /* display: -webkit-inline-box; */
+      /* top: 18%; */
 }
 
 #mPanel .ui-btn{
@@ -389,7 +401,6 @@ a#mPanel {
     background-position: 100% 100%;
     background-image: url('search.png');
     background-repeat: no-repeat;
-    /* background-size: 10% -1.5%; */
 }
 
 .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br{
