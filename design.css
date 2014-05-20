@@ -89,25 +89,13 @@ html,body, .ui-link{
 
 #mainPage div.ui-input-search.ui-body-inherit.ui-corner-all.ui-shadow-inset.ui-input-has-clear{
        background: #08d2c5;
-       // width: 80%;
-        
-       /* margin:0 5%; */
-        
-        
-        
-       /* margin: 0 0 0 5%; */ 
-        
-       /* width: 85%; */ 
-       /* top: 61%; */
        -webkit-border-radius: 0em;
         border-radius : 0em;
-       /* position: absolute; */
 }
 
 #resultPage div.ui-input-search.ui-body-inherit.ui-corner-all.ui-shadow-inset.ui-input-has-clear{
        background: white;
         width: 100%;
-        //margin-left: 5%;
         -webkit-border-radius: 0em;
         border-radius : 0em;
         color : black;
@@ -121,9 +109,7 @@ html,body, .ui-link{
 input#mainSearch{
     -webkit-border-radius: 0em;
     border-radius: 0px;
-    
-    /* left: 10px; */
-}
+    }
 
 
 #CLUbutton,#speechToolMain,#mainSpeech {
@@ -320,7 +306,7 @@ a#mPanel {
 }
 #resultContentForm{
      height: 34%;
-     position: fixed;
+     position: absolute;
      /* display: none; */
      top: 65%;
 }
@@ -395,4 +381,7 @@ a#mPanel {
 .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br{
     border-bottom-right-radius: 0;
     border-bottom-left-radius:0;
+}
+div#resultPage{
+        min-height: none;
 }

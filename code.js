@@ -40,27 +40,25 @@ $(document).on('keydown', '#resultSearch', function(noa) {
 //    console.log(e);
     if (noa.keyCode === 13) {
         getCLU($(this).val());
+        $("#resultContentForm").show();
         $(".loader").fadeIn("slow");
     }
 });
 
-//$("#resultSearch").focus(function(){
-//  $("#resultContentForm").css({"display":"none"})
-//});
-
-//$("#resultSearch").focus(function(){
-//     console.log("in");
-//      if(detectmob()){
-//          alert("aaa");
-//      $("#resultContentForm").css({"display":"none"});  
-//    }else{
-//       $("#resultContentForm").css({"display":"list-item"}); 
-//    }
-//});
-//$("#resultSearch").blur(function(){
-//    console.log("out");
-//  $("#resultContentForm").css({"display":"inline"});
-//});
+$("#resultSearch").focusin(function(){
+     console.log("in");
+  $("#resultContentForm").hide();
+   $('#lineup').css({
+        "top": "60%"
+    });
+});
+$("#resultSearch").focusout(function(){
+     console.log("out");
+  $("#resultContentForm").show();
+  $('#lineup').css({
+        "top": "70%"
+    });
+});
 
 /**
  * 
@@ -273,7 +271,7 @@ function getAnotherValue(toRemove) {
     if (count == 6) {
         if (removedItem == 5) {
             removeFromList(toRemove);
-            //addWikiElement();
+            addWikiElement();
         } else {
             removeFromList(toRemove);
         }
@@ -403,4 +401,6 @@ function detectmob() {
     return false;
   }
 }
+
+
 
