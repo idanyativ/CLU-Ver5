@@ -104,7 +104,7 @@ function sendValueToServer(value) {
             .done(function(response) {
                 console.log(response);
                 $(".loader").fadeOut("slow");
-                document.getElementById('resultPage').focus();
+                //document.getElementById('resultPage').focus();
                 var incomeResults = JSON.parse(response);
                 result = JSON.parse(response);
                 // valid that the results isn't null
@@ -273,7 +273,7 @@ function getAnotherValue(toRemove) {
     if (count == 6) {
         if (removedItem == 5) {
             removeFromList(toRemove);
-            addWikiElement();
+            //addWikiElement();
         } else {
             removeFromList(toRemove);
         }
