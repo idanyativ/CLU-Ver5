@@ -70,7 +70,7 @@ html,body, .ui-link{
     position: absolute;
 }
 #resultLight, #mainLight ,#aboutLight{
-    background-image: url("onlyLight.png") !important;
+    background-image: url("logo512.png") !important;
     background-size: 100% 100%; 
   //  background: transparent;
     width: 3%; 
