@@ -70,10 +70,8 @@ html,body, .ui-link{
     position: absolute;
 }
 #resultLight, #mainLight ,#aboutLight,#tutorialLight{
-    //background-image: url("onlyLight.png") !important;
     background-image: url("random.png") !important;
     background-size: 100% 100%; 
-  //  background: transparent;
     width: 2%; 
     height: 10%;
     margin-right: 1%;
