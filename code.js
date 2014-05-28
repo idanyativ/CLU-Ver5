@@ -402,5 +402,47 @@ function detectmob() {
   }
 }
 
+$("#tutorialPage").ready(function(){
+    $("#tutorialStepTitle").text("Swipe left on the image to go on");
+    $("#tutorialStepTitle").css({"font-size":"1em","color":"rgb(11,191,179)","font-weight": "bold", "margin-left": "12%", "font-family": "'Lato', sans-serif"});
+        $('#tutorialContentImage').css({"background-image": "url(tut1.jpg)", "background-repeat": "no-repeat", "background-size": "100% 100%"});
 
+    //$('#tutorialPage').css({"background-image": "url(tut1.jpg)", "background-repeat": "no-repeat", "background-size": "100% 100%"});
+   // $('#tutorialContentImage').css({"background-image": "url(tut1.jpg)", "background-repeat": "no-repeat", "background-size": "100% 100%"});
+});
+
+$("#tutorialContentImage").on("swiperight",function(){
+        console.log("right");
+        var currentBackground = $('#tutorialContentImage').css('background-image');
+        console.log(currentBackground);
+            var secondTut = "tut2.jpg";
+            var thirdTut = "tut3.jpg";
+    if (currentBackground.indexOf(thirdTut) > -1) {
+    $('#tutorialContentImage').css({"background-image": "url(tut2.jpg)", "background-repeat": "no-repeat", "background-size": "100% 100%"});
+    $("#tutorialStepTitle").text("Swipe right on the image to go on or left to go back");
+    }else if (currentBackground.indexOf(secondTut) > -1){
+            $('#tutorialContentImage').css({"background-image": "url(tut1.jpg)", "background-repeat": "no-repeat", "background-size": "100% 100%"});
+        $("#tutorialStepTitle").text("swipe left on the image to go on");
+
+    }
+});
+
+$("#tutorialContentImage").on("swipeleft",function(){
+    console.log("left");
+            var currentBackground = $('#tutorialContentImage').css('background-image');
+    console.log(currentBackground);
+            var firstTut = "tut1.jpg";
+            var secondTut = "tut2.jpg";
+            var thirdTut = "tut3.jpg";
+            if (currentBackground.indexOf(firstTut) > -1) {
+            console.log("first");
+    $('#tutorialContentImage').css({"background-image": "url(tut2.jpg)", "background-repeat": "no-repeat", "background-size": "100% 100%"});
+        $("#tutorialStepTitle").text("Swipe left on the image to go on or right to go back");
+    }else if (currentBackground.indexOf(secondTut) > -1){
+            $('#tutorialContentImage').css({"background-image": "url(tut3.jpg)", "background-repeat": "no-repeat", "background-size": "100% 100%"});
+        $("#tutorialStepTitle").text("Swipe left on the image to go to menu or right to go back");
+    }else if(currentBackground.indexOf(thirdTut) > -1){
+            $.mobile.changePage('#mainPage');
+        }
+});
 
